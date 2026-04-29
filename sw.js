@@ -1,4 +1,4 @@
-const CACHE = 'nyt100-v4';
+const CACHE = 'nyt100-v5';
 const SHELL = [
   './',
   './index.html',
@@ -30,9 +30,9 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Network-first for OSM tiles
-  if (url.hostname.endsWith('tile.openstreetmap.org')) {
-    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
+  // Let map tile requests bypass the SW entirely — browser handles natively
+  if (url.hostname.endsWith('tile.openstreetmap.org') ||
+      url.hostname.endsWith('basemaps.cartocdn.com')) {
     return;
   }
   // Cache-first for shell assets
