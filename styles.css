@@ -64,6 +64,16 @@ body {
   z-index: 100;
   box-shadow: 0 -2px 12px rgba(93,62,40,0.06);
 }
+/* Extend nav background to fill gap between nav and physical screen bottom in standalone PWA mode */
+#bottom-nav::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background: #fff;
+}
 .nav-btn {
   flex: 1;
   display: flex;
