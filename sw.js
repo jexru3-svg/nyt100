@@ -1,13 +1,13 @@
-const CACHE = 'nyt100-v1';
+const CACHE = 'nyt100-v2';
 const SHELL = [
-  '/',
-  '/index.html',
-  '/styles.css',
-  '/app.js',
-  '/data/restaurants.json',
-  '/images/placeholder.svg',
-  '/icons/icon-192.svg',
-  '/icons/icon-512.svg'
+  './',
+  './index.html',
+  './styles.css',
+  './app.js',
+  './data/restaurants.json',
+  './images/placeholder.svg',
+  './icons/icon-192.svg',
+  './icons/icon-512.svg'
 ];
 
 self.addEventListener('install', e => {
@@ -26,13 +26,15 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Cache-first for shell assets; network-first for tiles (map)
-  if (url.hostname === 'tile.openstreetmap.org') {
+  // Network-first for OSM tiles and CDN assets (Leaflet)
+  if (url.hostname.endsWith('tile.openstreetmap.org') ||
+      url.hostname === 'unpkg.com') {
     e.respondWith(
       fetch(e.request).catch(() => caches.match(e.request))
     );
     return;
   }
+  // Cache-first for shell assets
   e.respondWith(
     caches.match(e.request).then(cached => {
       if (cached) return cached;

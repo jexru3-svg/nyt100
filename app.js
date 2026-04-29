@@ -294,6 +294,9 @@ function startSpin() {
   const names = pool.map(r => r.name);
   if (App.spinInterval) clearInterval(App.spinInterval);
 
+  // Animate reel
+  if (reel) reel.classList.add('spinning');
+
   // Quick spin
   App.spinInterval = setInterval(() => {
     ticks++;
@@ -331,6 +334,7 @@ document.getElementById('spin-view-btn')?.addEventListener('click', () => {
   if (App.spinTarget) navigate('#restaurant/' + App.spinTarget.id);
 });
 document.getElementById('spin-again-btn')?.addEventListener('click', startSpin);
+document.getElementById('rest-back')?.addEventListener('click', () => history.back());
 document.getElementById('spin-back')?.addEventListener('click', () => {
   if (App.spinInterval) clearInterval(App.spinInterval);
   history.back();
@@ -428,9 +432,6 @@ function renderRestaurant(id) {
 
   // Rating
   renderRatingDots(ud.ratings[id] || 0);
-
-  // Back button
-  document.getElementById('rest-back')?.addEventListener('click', () => history.back(), { once: true });
 
   // Scroll to top
   const view = document.getElementById('view-restaurant');
