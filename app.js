@@ -1,5 +1,54 @@
 'use strict';
 
+// ── CUISINE THEMES ───────────────────────────────────────────
+const CUISINE_THEMES = {
+  'East Asian':        { bg1: '#0a1f13', bg2: '#0f2d1a', accent: '#4caf78' },
+  'South Asian':       { bg1: '#1f0e06', bg2: '#2d1608', accent: '#e06840' },
+  'Latin / Caribbean': { bg1: '#1f1500', bg2: '#2d1f00', accent: '#E8C547' },
+  'European':          { bg1: '#060d1f', bg2: '#0a142e', accent: '#7aaee8' },
+  'American':          { bg1: '#0f0e04', bg2: '#1a1a06', accent: '#c8b84a' },
+  'Middle Eastern':    { bg1: '#1a0a06', bg2: '#260f08', accent: '#d4906a' },
+  'Southeast Asian':   { bg1: '#061710', bg2: '#092318', accent: '#3dbf96' },
+  'African':           { bg1: '#120404', bg2: '#1c0606', accent: '#e06868' },
+  'Other':             { bg1: '#0d0d0d', bg2: '#181818', accent: '#8a8a8a' },
+};
+
+function genThumbSVG(r) {
+  const t = CUISINE_THEMES[r.cuisine_category] || CUISINE_THEMES['Other'];
+  const letter = (r.name.trim()[0] || '?').toUpperCase();
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56">
+    <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${t.bg1}"/>
+      <stop offset="100%" stop-color="${t.bg2}"/>
+    </linearGradient></defs>
+    <rect width="56" height="56" fill="url(#g)"/>
+    <text x="28" y="38" text-anchor="middle" fill="${t.accent}"
+      font-size="30" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+      font-weight="800">${letter}</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
+function genHeroSVG(r) {
+  const t = CUISINE_THEMES[r.cuisine_category] || CUISINE_THEMES['Other'];
+  const words = r.name.trim().split(/\s+/).slice(0, 2);
+  const initials = words.map(w => w[0].toUpperCase()).join('');
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 240">
+    <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="${t.bg1}"/>
+      <stop offset="100%" stop-color="${t.bg2}"/>
+    </linearGradient></defs>
+    <rect width="600" height="240" fill="url(#g)"/>
+    <text x="300" y="118" text-anchor="middle" fill="${t.accent}"
+      font-size="80" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+      font-weight="800" opacity="0.9">${initials}</text>
+    <text x="300" y="158" text-anchor="middle" fill="${t.accent}"
+      font-size="14" font-family="-apple-system,BlinkMacSystemFont,sans-serif"
+      font-weight="500" letter-spacing="3" opacity="0.5">${r.cuisine_category.toUpperCase()}</text>
+  </svg>`;
+  return 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg);
+}
+
 // ── STATE ────────────────────────────────────────────────────
 const App = {
   restaurants: [],
@@ -120,6 +169,7 @@ function renderRecentVisits() {
 
   list.innerHTML = visited.map(r => `
     <div class="recent-card" onclick="navigate('#restaurant/${r.id}')">
+      <div class="recent-card-thumb" style="background-image:url('${genThumbSVG(r)}')"></div>
       <div class="recent-card-name">${esc(r.name)}</div>
       <div class="recent-card-hood">${esc(r.neighborhood)}</div>
       ${App.userData.ratings[r.id] ? `<div class="recent-card-rating">${App.userData.ratings[r.id]}/10</div>` : ''}
@@ -348,7 +398,10 @@ function renderRestaurant(id) {
 
   // Hero image
   const img = document.getElementById('rest-image');
-  if (img) { img.src = r.image || 'images/placeholder.svg'; img.alt = r.name; }
+  if (img) {
+    img.src = (r.image && r.image !== 'images/placeholder.svg') ? r.image : genHeroSVG(r);
+    img.alt = r.name;
+  }
 
   // Rank badge
   const rb = document.getElementById('rest-rank-badge');
@@ -580,7 +633,7 @@ function restaurantCardHTML(r) {
   const isWant = !!App.userData.wantToGo[r.id];
   return `
     <div class="rest-card" onclick="navigate('#restaurant/${r.id}')">
-      <img class="rest-card-thumb" src="${r.image || 'images/placeholder.svg'}" alt="${esc(r.name)}" loading="lazy">
+      <img class="rest-card-thumb" src="${(r.image && r.image !== 'images/placeholder.svg') ? r.image : genThumbSVG(r)}" alt="${esc(r.name)}" loading="lazy">
       <div class="rest-card-body">
         <div class="rest-card-name">${esc(r.name)}</div>
         <div class="rest-card-hood">${esc(r.neighborhood)}, ${esc(r.borough)}</div>
@@ -647,7 +700,7 @@ function renderMyListContent() {
     const rating = App.userData.ratings[r.id];
     return `
       <div class="rest-card" onclick="navigate('#restaurant/${r.id}')">
-        <img class="rest-card-thumb" src="${r.image || 'images/placeholder.svg'}" alt="${esc(r.name)}" loading="lazy">
+        <img class="rest-card-thumb" src="${(r.image && r.image !== 'images/placeholder.svg') ? r.image : genThumbSVG(r)}" alt="${esc(r.name)}" loading="lazy">
         <div class="rest-card-body">
           <div class="rest-card-name">${esc(r.name)}</div>
           <div class="rest-card-hood">${esc(r.neighborhood)}, ${esc(r.borough)}</div>

@@ -239,6 +239,14 @@ body {
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
 }
+.recent-card-thumb {
+  width: 100%;
+  height: 64px;
+  border-radius: 8px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 8px;
+}
 .recent-card-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
 .recent-card-hood { font-size: 11px; color: var(--text-dim); }
 .recent-card-rating { font-size: 13px; color: var(--gold); margin-top: 6px; }
