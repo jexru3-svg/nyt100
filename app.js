@@ -535,7 +535,7 @@ function renderRestaurant(id) {
   const links = [];
   if (r.website) links.push({ href: r.website, label: 'Restaurant website', icon: '&#127760;' });
   if (r.lat && r.lng) links.push({
-    href: `maps://maps.apple.com/?q=${encodeURIComponent(r.name + ' ' + r.neighborhood + ' NYC')}`,
+    href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(r.name + ', ' + (r.address || r.neighborhood + ', NYC'))}`,
     label: 'Get directions',
     icon: '&#128205;'
   });
