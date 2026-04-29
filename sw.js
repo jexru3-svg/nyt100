@@ -1,4 +1,4 @@
-const CACHE = 'nyt100-v3';
+const CACHE = 'nyt100-v4';
 const SHELL = [
   './',
   './index.html',
@@ -9,7 +9,9 @@ const SHELL = [
   './icons/icon-192.svg',
   './icons/icon-512.svg',
   './icons/icon-192.png',
-  './icons/icon-512.png'
+  './icons/icon-512.png',
+  './vendor/leaflet/leaflet.min.js',
+  './vendor/leaflet/leaflet.min.css'
 ];
 
 self.addEventListener('install', e => {
@@ -28,12 +30,9 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
-  // Network-first for OSM tiles and CDN assets (Leaflet)
-  if (url.hostname.endsWith('tile.openstreetmap.org') ||
-      url.hostname === 'unpkg.com') {
-    e.respondWith(
-      fetch(e.request).catch(() => caches.match(e.request))
-    );
+  // Network-first for OSM tiles
+  if (url.hostname.endsWith('tile.openstreetmap.org')) {
+    e.respondWith(fetch(e.request).catch(() => caches.match(e.request)));
     return;
   }
   // Cache-first for shell assets
