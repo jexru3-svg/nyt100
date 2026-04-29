@@ -969,7 +969,21 @@ let mapViewFilter = 'all';
 
 function initMap() {
   const container = document.getElementById('leaflet-map');
-  if (!container || typeof L === 'undefined') return;
+  if (!container) return;
+
+  // Leaflet CDN may still be loading — retry for up to 5s
+  if (typeof L === 'undefined') {
+    let attempts = 0;
+    const retry = setInterval(() => {
+      attempts++;
+      if (typeof L !== 'undefined') { clearInterval(retry); initMap(); }
+      else if (attempts >= 50) {
+        clearInterval(retry);
+        showToast('Map unavailable — check your connection');
+      }
+    }, 100);
+    return;
+  }
 
   if (!leafletMap) {
     leafletMap = L.map('leaflet-map', {
@@ -983,8 +997,9 @@ function initMap() {
       maxZoom: 19
     }).addTo(leafletMap);
   }
-  // Fix display glitch when view becomes visible
-  setTimeout(() => leafletMap.invalidateSize(), 100);
+  // Two calls: first after view transition (200ms), second as belt-and-suspenders
+  setTimeout(() => leafletMap.invalidateSize(), 250);
+  setTimeout(() => leafletMap.invalidateSize(), 600);
   renderMapMarkers();
 }
 
