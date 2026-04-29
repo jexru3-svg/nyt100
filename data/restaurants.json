@@ -180,7 +180,7 @@
     "address": "18 King St, New York, NY 10014",
     "lat": 40.7264,
     "lng": -74.0042,
-    "website": "https://www.king-restaurant.com",
+    "website": "https://kingrestaurant.nyc",
     "description": "This intimate South Village restaurant from Annie Shi and chefs Clare de Boer and Jess Shadbolt serves a daily-changing menu of French and Italian-inflected Mediterranean cooking with immaculate technique and impeccably sourced seasonal produce. The formal white-tablecloth room and restrained playlist give it a quietly elegant character suited to a mature, wine-serious crowd.",
     "popular_dishes": [
       "Chargrilled Onglet (hanger steak)",
@@ -212,7 +212,7 @@
     "address": "90 E 10th St, New York, NY 10003",
     "lat": 40.7264,
     "lng": -73.9844,
-    "website": "https://www.pennyny.com",
+    "website": "https://www.penny-nyc.com",
     "description": "The 31-seat counter-only seafood and wine bar above sister restaurant Claud offers an exceptional raw bar and refined cooked seafood in an atmosphere that feels both luxurious and easy, with a wine room stocked to the ceiling and chefs working in full view. Limited reservations go quickly, but early or late walk-in spots are often available day-of.",
     "popular_dishes": [
       "Ice Box (oysters, clams, scallop, mussels, Argentinian red shrimp)",
@@ -244,7 +244,7 @@
     "address": "3 E 41st St, New York, NY 10017",
     "lat": 40.7487,
     "lng": -73.9888,
-    "website": "https://sushisho.nyc",
+    "website": "https://www.sushi-sho.com",
     "description": "Chef Keiji Nakazawa, who pioneered his Tokyo original and later a Waikiki outpost, brings his meticulous omakase tradition to a small wooden room near Bryant Park, serving roughly 20 courses that emphasize classical techniques like ice-aging, vinegar curing, and koji-rice fermentation (izushi) with no blowtorches or gimmicks. The no-photography policy preserves the intimacy of a meal that can run $800 or more with okonomi add-ons.",
     "popular_dishes": [
       "Sharisotto (lobster risotto with sushi rice)",
@@ -309,7 +309,7 @@
     "address": "10 Lincoln Center Plaza, New York, NY 10023",
     "lat": 40.7726,
     "lng": -73.9836,
-    "website": "https://tatianabyko.com",
+    "website": "https://www.tatiananyc.com",
     "description": "Chef Kwame Onwuachi's landmark Lincoln Center restaurant melds his Bronx upbringing with Nigerian, Creole, and Caribbean culinary roots into a joyful, Biggie-soundtracked dining room that transformed New York's big-night-out scene when it opened in 2022. A six-seat bar is available for walk-ins, and the kitchen's tight menu of curried goat patties, short rib pastrami suya, and bodega brownie ice cream has almost no skips.",
     "popular_dishes": [
       "Short Rib Pastrami Suya",
@@ -405,7 +405,7 @@
     "address": "24-19 Steinway St, Astoria, NY 11103",
     "lat": 40.7694,
     "lng": -73.9088,
-    "website": "https://abouqirseafood.com",
+    "website": "https://www.abuqirseafoodqueens.com",
     "description": "A small Egyptian seafood market and restaurant on Steinway Street where you browse a daily fish counter — tiger shrimp, whole fish, squid, and octopus — and tell the counter staff how you want it cooked. The Egyptian-spiced whole fish is a standout, and the smoky baba ghanoush is essential.",
     "popular_dishes": [
       "Whole fish Egyptian-style",
@@ -595,7 +595,7 @@
     "address": "124 E 27th St, New York, NY 10016",
     "lat": 40.7549,
     "lng": -73.984,
-    "website": "https://www.borgo.nyc",
+    "website": "https://borgonyc.com",
     "description": "Andrew Tarlow's first Manhattan restaurant (from the team behind Diner, Marlow and Sons, and She Wolf bread) is an elegant, white-tablecloth Nomad trattoria with wood-burning oven and a generously spaced dining room, best known for its timballo di anelletti — a gloriously rich pasta pie — and fried delicata squash drizzled with honey and chili oil.",
     "popular_dishes": [
       "Timballo di anelletti (pasta pie with braised beef)",
@@ -627,7 +627,7 @@
     "address": "9 Chatham Square, New York, NY 10038",
     "lat": 40.7157,
     "lng": -73.997,
-    "website": "https://bridgesrestaurantnyc.com",
+    "website": "https://www.bridges-nyc.com",
     "description": "From a former Estela chef, Bridges is a coolly atmospheric New American restaurant in Chinatown where quietly complex dishes — a buttery comté and chanterelle tart, an impossibly silky uni custard, duck breast with XO sauce — draw a scene-conscious but food-serious crowd to a room that feels like the inside of a bank vault. One of NYC's best new restaurants of 2025.",
     "popular_dishes": [
       "Comté tart with chanterelles",
@@ -658,7 +658,7 @@
     "address": "24 1st Ave., New York, NY 10009",
     "lat": 40.7264,
     "lng": -73.9844,
-    "website": "https://bungalow.nyc",
+    "website": "https://www.bungalowny.com",
     "description": "Chef Vikas Khanna's lively East Village dining room celebrates the diverse culinary traditions of India's 28 states, with vibrant cocktails and contemporary dishes that have earned a Michelin Bib Gourmand. Walk-in spots are eagerly sought, with diners lining up early when reservations run out.",
     "popular_dishes": [
       "Five cheese kulcha (stuffed flatbread)",
@@ -847,7 +847,7 @@
     "address": "94 Chambers St., New York, NY 10007",
     "lat": 40.7195,
     "lng": -74.0089,
-    "website": "https://www.chamberstribeca.com",
+    "website": "https://www.chambers.nyc",
     "description": "A Michelin-listed TriBeCa spot beloved for its casual elegance, product-focused seasonal plates, and an exceptional wine program curated by Master Sommelier Pascaline Lepeltier, featuring back vintages and surprising value. The kitchen turns out refined small and large plates like honeynut squash agnolotti and seared Long Island fluke.",
     "popular_dishes": [
       "Castelfranco salad with heirloom chicory and clothbound cheddar",
@@ -910,7 +910,7 @@
     "address": "55 W. 35th St., New York, NY 10018",
     "lat": 40.7507,
     "lng": -73.9882,
-    "website": "https://chodanggol.com",
+    "website": "https://chodanggolnyc.com",
     "description": "A longtime Koreatown stalwart and Michelin Bib Gourmand winner where house-made soft tofu is the star, served in bubbling casseroles and stews alongside rustic Korean favorites like pajeon, bibimbap, and kimchi stir-fries. A warm, simply decorated room makes it a reliable choice for unpretentious, soul-satisfying cooking.",
     "popular_dishes": [
       "Soon dubu jjigae (soft tofu stew)",
@@ -972,7 +972,7 @@
     "address": "2321 Hughes Ave, Bronx, NY 10458",
     "lat": 40.8518,
     "lng": -73.8878,
-    "website": "https://www.ckakaellu.com",
+    "website": "https://ckakaqellu.com",
     "description": "Named for a phrase meaning 'what we happen to have,' this Belmont dining room doubles as a museum of 18th and 19th century Albanian artifacts collected by its owner, Ramiz, who opened the restaurant after finding no authentic Albanian food in NYC. The hearty, homey cooking covers classic dishes from Albania and Kosovo alongside hand-collected regional relics in glass cases lining the walls.",
     "popular_dishes": [
       "Burek (golden-brown phyllo stuffed with soft cheese)",
@@ -1035,7 +1035,7 @@
     "address": "130 Hamilton Pl, New York, NY 10031",
     "lat": 40.8116,
     "lng": -73.9527,
-    "website": null,
+    "website": "https://www.cocinaconsuelonyc.com",
     "description": "A husband-and-wife-run neighborhood spot in Hamilton Heights serving seasonal Mexican cooking with a festive sunlit room in yellow and blue, frequent live music, and a strict all-Mexican beer and wine list. The kitchen's 15-hour birria bone marrow and housemade corn tortillas anchor a menu that changes with the seasons.",
     "popular_dishes": [
       "Birria bone marrow (15-hour braise, with salsa roja and housemade tortillas)",
@@ -1163,7 +1163,7 @@
     "address": "72-09 Broadway, Jackson Heights, NY 11372",
     "lat": 40.7476,
     "lng": -73.8905,
-    "website": null,
+    "website": "https://deranyc.com",
     "description": "A Jackson Heights dining room serving the overlapping cuisines of South Asia's four corners - Pakistan, India, Bangladesh, and Nepal - in a neighborhood that has long been one of the richest concentrations of that culinary tradition in New York. The menu spans tandoor-fired breads, biryanis, and slow-braised meats that reflect the diversity of the corridor along Roosevelt Avenue.",
     "popular_dishes": [
       "Nihari",
@@ -1194,7 +1194,7 @@
     "address": "119 Delancey St, New York, NY 10002",
     "lat": 40.7189,
     "lng": -73.988,
-    "website": "https://dhamakanyc.com",
+    "website": "https://www.dhamaka.nyc",
     "description": "Roni Mazumdar and chef Chintan Pandya's Michelin Bib Gourmand Indian restaurant at Essex Market is a bold love letter to the rustic, unapologetic cooking of India's hinterlands - offal, fierce heat, and clay pots are all part of the deal. The name means 'explosion' in Hindi, and the cooking delivers on that promise with dishes rarely seen in American Indian restaurants.",
     "popular_dishes": [
       "Smoky goat belly with coriander seeds wrapped in cedar wood",
@@ -1225,7 +1225,7 @@
     "address": "135-58 Lefferts Blvd, South Ozone Park, NY 11420",
     "lat": 40.6697,
     "lng": -73.8243,
-    "website": null,
+    "website": "https://www.donpeppeny.com",
     "description": "A decades-old South Ozone Park institution beloved for its no-frills, generous red-sauce Italian-American cooking - the kind of place where regulars order off-menu and portions arrive family-style without ceremony. Located near JFK and largely off the Manhattan radar, it has long sustained a devoted local following who treat it as a neighborhood treasure.",
     "popular_dishes": [
       "Chicken parmigiana",
@@ -1257,7 +1257,7 @@
     "address": "New Lots, Brooklyn, NY",
     "lat": 40.6614,
     "lng": -73.8858,
-    "website": null,
+    "website": "https://www.brooklynafricanrestaurant.com",
     "description": "A Nigerian and West African bakery and restaurant in the New Lots neighborhood of Brooklyn, bringing the flavors of home cooking - egusi, jollof rice, suya, and puff-puff - to a part of Brooklyn that has historically had limited restaurant options. The operation runs on a small, personal scale that reflects the owner's commitment to the local community.",
     "popular_dishes": [
       "Chin Chin",
@@ -1350,7 +1350,7 @@
     "address": "425 Park Ave, New York, NY 10022",
     "lat": 40.7585,
     "lng": -73.972,
-    "website": "https://fourtwentyfive.com",
+    "website": "https://www.425parkrestaurant.com",
     "description": "Jean-Georges Vongerichten's bi-level dining room inside the striking 425 Park Avenue tower brings his signature global-French sensibility to Midtown's most polished new address. Expect leek-swirled foie gras terrine, sesame-crusted scallops, and duck breast with lemongrass-coconut sauce in a setting of dangling lights and a glass-enclosed kitchen.",
     "popular_dishes": [
       "Foie Gras Terrine with spiced madeleines",
@@ -1445,7 +1445,7 @@
     "address": "123 Madison St, New York, NY 10002",
     "lat": 40.7134,
     "lng": -73.994,
-    "website": "https://goldendiner.com",
+    "website": "https://www.goldendinerny.com",
     "description": "Sam Yoo's diner in the Two Bridges neighborhood near Chinatown gives the classic American diner form a soulful Asian-American upgrade, serving all-day breakfast sandwiches on scallion milk buns alongside chicken katsu clubs and Thai cobb salads. Swivel stools, an analog clock, and lace curtains set the mood, but the food is anything but retro.",
     "popular_dishes": [
       "Chinatown Breakfast Sandwich on scallion milk bun",
@@ -1507,7 +1507,7 @@
     "address": "28 Bowery, New York, NY 10013",
     "lat": 40.7147,
     "lng": -73.998,
-    "website": "https://www.greatnynoodletown.com",
+    "website": "https://www.greatnewyorknoodletown.com",
     "description": "A no-frills Chinatown cash-only institution that has been feeding night owls and noodle lovers for decades with roast meats and punchy Cantonese soups until the early hours. Service is brisk to the point of bluntness, the prices are low, and the wonton noodle soup and pan-fried beef chow fun are among the best in the city.",
     "popular_dishes": [
       "Wonton Noodle Soup",
@@ -1538,7 +1538,7 @@
     "address": "99 E 52nd St, New York, NY 10022",
     "lat": 40.7567,
     "lng": -73.9722,
-    "website": "https://thegrillnyc.com",
+    "website": "https://thegrillnewyork.com",
     "description": "Mario Carbone and Rich Torrisi's theatrical American restaurant inside the landmarked Seagram Building — where the term power lunch was invented — delivers an hours-long performance of tableside prime rib, pre-batched martinis poured from impossible heights, and a pasta sauce pressed from bones through an antique 1901 device. The room is dark, stage-lit wood, and the vibe is unabashedly expensive.",
     "popular_dishes": [
       "Prime Rib Trolley Service",
@@ -1632,7 +1632,7 @@
     "address": "68-22 Forest Ave, Ridgewood, NY 11385",
     "lat": 40.7062,
     "lng": -73.9091,
-    "website": "https://www.hellbendernighttime.com",
+    "website": "https://www.hellbendernyc.com",
     "description": "From a team of Gramercy Tavern alumni, Hellbender is a Mexican-American nighttime cafe tucked into Ridgewood, Queens, with a laid-back bar atmosphere, strong tequila and mezcal cocktails, and snacks rooted in the chef's Mexican heritage. The weekly rotating Jello dessert and chamoy-coated fruit have become neighborhood talking points.",
     "popular_dishes": [
       "Chamoy-coated fruit",
@@ -1663,7 +1663,7 @@
     "address": "110 E 7th St, New York, NY 10009",
     "lat": 40.7265,
     "lng": -73.9838,
-    "website": "https://www.hofoods.nyc",
+    "website": "https://www.hofoodsnyc.com",
     "description": "A closet-sized East Village gem specializing in Taiwanese beef noodle soup, with a slow-cooked broth that takes hours to build. The short menu of delicate tofu, minced pork over rice, and perfectly al-dente noodles punches well above the restaurant's modest footprint.",
     "popular_dishes": [
       "Taiwanese beef noodle soup",
@@ -1851,7 +1851,7 @@
     "address": "205 Allen St, New York, NY 10002",
     "lat": 40.7189,
     "lng": -73.9854,
-    "website": "https://www.exploretock.com/kisa",
+    "website": "https://www.kisaus.com",
     "description": "Kisa is a stripped-down Korean baekban diner on the Lower East Side modeled after the roadside diners of 1980s Korea, where $32 buys a protein, soup, rice, and seven bowls of banchan. Lunch is walk-in only; dinner reserves two-thirds of tables on Resy while keeping the rest for walk-ins, and the James Beard-nominated spot fills fast.",
     "popular_dishes": [
       "Bulgogi platter with banchan",
@@ -1883,7 +1883,7 @@
     "address": "16 West 29th St, New York, NY 10001",
     "lat": 40.745,
     "lng": -73.9872,
-    "website": "https://kolomannyc.com",
+    "website": null,
     "description": "Chef Markus Glocker's Viennese-influenced restaurant occupies the former Breslin space at the Ace Hotel in NoMad, blending Parisian creativity with Austrian tradition. The standout schnitzel Viennoise and impeccable gougeres anchor a menu that also features tafelspitz, terrines, and a well-curated list of spirit-free cocktails.",
     "popular_dishes": [
       "Schnitzel Viennoise (veal)",
@@ -1915,7 +1915,7 @@
     "address": "Chinatown, New York, NY 10013",
     "lat": 40.7157,
     "lng": -73.9978,
-    "website": "https://kononyc.com",
+    "website": "https://www.yakitorikono.com",
     "description": "An intimate Japanese omakase counter that opened in Chinatown in 2025, offering a chef-driven tasting experience rooted in seasonal Japanese ingredients. The small-seat format and reservation-only policy make it one of the harder tables to land in the city.",
     "popular_dishes": [
       "Omakase tasting menu (chef's selection)",
@@ -1946,7 +1946,7 @@
     "address": "151 East Broadway, New York, NY 10002",
     "lat": 40.7139,
     "lng": -73.9941,
-    "website": "https://kopitiamny.com",
+    "website": "https://www.kopitiamnyc.com",
     "description": "Chef-owner Kyo Pang, a third-generation Nyonya, serves fast-casual Nyonya cuisine in this coffee-shop-style spot on the Lower East Side, where no-reservations walk-ins order at the counter before seating. The menu highlights the hybrid Chinese-Malay cooking tradition with dishes made from scratch using Malaysian-sourced ingredients and no artificial additives.",
     "popular_dishes": [
       "Nasi Lemak (coconut rice with ikan bilis, sambal, cucumber, egg)",
@@ -2070,7 +2070,7 @@
     "address": "129 E. 60th St., New York, NY 10022",
     "lat": 40.7626,
     "lng": -73.9677,
-    "website": "https://www.leveaudornyc.com",
+    "website": "https://www.lvdnyc.com",
     "description": "Originally opened in 1937 and revived by Balthazar-founding chefs Lee Hanson and Riad Nasr, this intimate prix-fixe bistro on the Upper East Side is a love letter to classic French cooking done impeccably. Dark wood, linen-draped tables, and unapologetically buttery sauces make it one of the most romantic rooms in the city.",
     "popular_dishes": [
       "Pate en croute",
@@ -2101,7 +2101,7 @@
     "address": "Astoria, Queens, NY 11103",
     "lat": 40.7712,
     "lng": -73.9306,
-    "website": null,
+    "website": "https://levantnyc.com",
     "description": "A 2025 arrival in Astoria serving modern Middle Eastern cooking from the Levant region, with a menu that draws on the culinary traditions of Lebanon, Syria, and neighboring cuisines. Reservations are taken through Resy and the restaurant has attracted early buzz for its refined approach to the region's flavors.",
     "popular_dishes": [
       "Mezze spread with seasonal dips and flatbreads",
@@ -2163,7 +2163,7 @@
     "address": "150 E. 2nd St., New York, NY 10009",
     "lat": 40.7265,
     "lng": -73.9844,
-    "website": null,
+    "website": "https://littlemyanmar.org",
     "description": "A family-run Burmese gem in the East Village where husband and wife team Thidar Kyaw and Tin Ko Naing serve a surprisingly large menu of soups, salads, curries, and roti dishes from a tiny room with outsized warmth. The Michelin Bib Gourmand-recognized spot is known for bold flavors and generous portions perfect for sharing.",
     "popular_dishes": [
       "Burmese pancake with vegetables and toasted sesame seeds",
@@ -2227,7 +2227,7 @@
     "address": "2201 Avenue X, Brooklyn, NY 11235",
     "lat": 40.5968,
     "lng": -73.9552,
-    "website": "https://www.luciapizzaofavenuex.com",
+    "website": "https://lucia.pizza",
     "description": "A slice shop on Avenue X in Sheepshead Bay that has quietly become one of Brooklyn's most celebrated pizzerias, known for a crust that threads the needle between floppy and crispy. Every pie is available by the slice and best eaten straight from the oven at one of the few tables inside.",
     "popular_dishes": [
       "Vodka slice",
@@ -2289,7 +2289,7 @@
     "address": "13 E 30th St, New York, NY 10016",
     "lat": 40.7488,
     "lng": -73.9878,
-    "website": "https://www.okdongsik.com",
+    "website": "https://www.okdongsik.net",
     "description": "A 13-seat counter in Koreatown devoted to a single dish: pork gomtang, a delicate clear-broth soup poured over rice in the gukbap tradition, served with kimchi and optional mandu. The light, clarifying soup and intimate format make it a destination for solo diners who want something quietly exceptional.",
     "popular_dishes": [
       "Pork gomtang (clear pork bone soup over rice)",
@@ -2353,7 +2353,7 @@
     "address": "67-03 Austin St, Forest Hills, NY 11375",
     "lat": 40.7206,
     "lng": -73.8459,
-    "website": "https://www.oldsportnyc.com",
+    "website": "https://www.oldsportfoodflushing.com",
     "description": "A Chinese-American halal restaurant on Austin Street in Forest Hills that draws a devoted local crowd for its roast meats and layered rice dishes prepared with halal techniques. The casual storefront format and accessible pricing make it one of the more talked-about new spots to open in Queens in 2025.",
     "popular_dishes": [
       "Roast duck over rice",
@@ -2385,7 +2385,7 @@
     "address": "290 Elizabeth St, New York, NY 10012",
     "lat": 40.7256,
     "lng": -73.992,
-    "website": "https://rafsnyc.com",
+    "website": "https://www.rafsnewyork.com",
     "description": "A Noho bistro from chefs Mary Attea and pastry chef Camari Mick, set inside a room painted with billowy clouds, whose French- and Italian-accented menu leans into perfectly executed classics: herb-laden roast chicken, hand-rolled pastas, and an essential white chocolate budino to finish. Reservations are competitive, but the bar is available for walk-ins.",
     "popular_dishes": [
       "Roasted half chicken with herbs",
@@ -2481,7 +2481,7 @@
     "address": "174 5th Ave, New York, NY 10010",
     "lat": 40.7406,
     "lng": -73.99,
-    "website": "https://www.sandplunch.com",
+    "website": "https://www.sandwich.place",
     "description": "A diner-style lunch counter that has faithfully carried on the legacy of Eisenberg's, the beloved sandwich shop that occupied this narrow Flatiron space since 1929, keeping swiveling counter stools, vinyl banquettes, and an expansive menu of classic New York deli and diner staples. It closes at 5pm daily, making it a breakfast and lunch destination only.",
     "popular_dishes": [
       "Eggs with lox",
@@ -2514,7 +2514,7 @@
     "address": "228 DeKalb Ave, Brooklyn, NY 11205",
     "lat": 40.6889,
     "lng": -73.9745,
-    "website": "https://www.sailorbrooklyn.com",
+    "website": "https://www.sailor.nyc",
     "description": "A maritime-themed Fort Greene bistro from chef April Bloomfield where the menu reads like classic NYC bistro but executes with exceptional richness: a caesar drowning in paint-thick dressing, branzino heaped with charred-lemon relish, and a cult-favorite roast chicken served alongside parm-crusted potatoes soaked in jus. A 2025 expansion added a more casual bar room with a separate lamb burger.",
     "popular_dishes": [
       "Roasted half chicken with parm-crusted potatoes",
@@ -2735,7 +2735,7 @@
     "address": "431 West Broadway, New York, NY 10012",
     "lat": 40.7248,
     "lng": -74.0019,
-    "website": "https://sushiouji.com",
+    "website": "https://ouji196.com",
     "description": "Sushi Ouji is a neighborhood omakase in SoHo that punches well above its $129 price point, offering a relaxed, quality-driven counter experience with well-sourced seafood in a comfortable downtown setting. Eater's reviewer called it a solid value play in a city where comparable omakase meals routinely cost twice as much.",
     "popular_dishes": [
       "Seasonal nigiri omakase",
@@ -2795,7 +2795,7 @@
     "address": "143-09 Holly Ave, Queens, NY 11355",
     "lat": 40.758,
     "lng": -73.8303,
-    "website": "https://templecanteen.com",
+    "website": "https://canteen.nyganeshtemple.org",
     "description": "Founded in 1993 in the basement of Flushing's Ganesh temple, this strictly vegetarian South Indian canteen serves some of the most authentic dosas, uttapam, and idlis in New York City at remarkable prices. Diners remove their shoes to eat, and are welcome to visit the Hindu temple upstairs before or after their meal.",
     "popular_dishes": [
       "Masala Dosa",
@@ -2858,7 +2858,7 @@
     "address": "360 Myrtle Ave, Brooklyn, NY 11205",
     "lat": 40.6889,
     "lng": -73.9745,
-    "website": null,
+    "website": "https://www.third-falcon.com",
     "description": "A relaxed French-American neighborhood bar-restaurant on Fort Greene's Myrtle Avenue strip, turning out confidently executed bistro food — steak frites, roast chicken, oysters — in a warm, unpretentious room that feels equally suited to a glass of wine at the bar or a proper dinner. It has become a go-to anchor for the surrounding brownstone neighborhood.",
     "popular_dishes": [
       "Steak frites",
@@ -3047,7 +3047,7 @@
     "address": "2621 86th St, Brooklyn, NY 11223",
     "lat": 40.5974,
     "lng": -73.9636,
-    "website": null,
+    "website": "https://villagecafeny.com",
     "description": "A new Azerbaijani restaurant in Gravesend that opened in 2025, bringing the flavors of the South Caucasus — fragrant lamb kebabs, pomegranate-laced salads, and slow-braised plov (rice pilaf) — to Brooklyn's southern tip. The unpretentious setting and generous portions have quickly made it a neighborhood favorite for the area's Azerbaijani and Central Asian communities.",
     "popular_dishes": [
       "Lamb shish kebab",
@@ -3109,7 +3109,7 @@
     "address": "8 W 36th St, New York, NY 10018",
     "lat": 40.7486,
     "lng": -73.988,
-    "website": "https://yoonhaeundaegalbi.com",
+    "website": "https://www.yoon-nyc.com",
     "description": "Chef Bobby Yoon's Koreatown Korean BBQ carries a multi-generational story — the short-rib cutting technique was developed by Yoon's grandfather at his Busan restaurant — lending a personal depth rarely found in the neighborhood's more anonymous grill houses. The polished room, creative cocktail list, and unusually generous portions set it apart from its densely packed K-town neighbors.",
     "popular_dishes": [
       "Galbi (short rib cut with proprietary Busan technique)",
