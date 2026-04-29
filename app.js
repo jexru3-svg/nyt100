@@ -53,7 +53,7 @@ function genHeroSVG(r) {
 const App = {
   restaurants: [],
   userData: { visited: {}, wantToGo: {}, ratings: {}, notes: {} },
-  filters: { boroughs: [], cuisines: [], priceTiers: [], walkInOnly: false },
+  filters: { boroughs: [], cuisines: [], priceTiers: [], neighborhoods: [], walkInOnly: false },
   currentView: 'discover',
   spinTarget: null,
   currentRestaurantId: null,
@@ -76,6 +76,7 @@ async function init() {
 
   setupRouter();
   setupNav();
+  buildNeighborhoodFilter();
   setupFilterSheet();
   setupBrowse();
   setupMyList();
@@ -188,6 +189,7 @@ document.getElementById('browse-filter-btn')?.addEventListener('click', openFilt
 function getFiltered() {
   return App.restaurants.filter(r => {
     if (App.filters.boroughs.length && !App.filters.boroughs.includes(r.borough)) return false;
+    if (App.filters.neighborhoods.length && !App.filters.neighborhoods.includes(r.neighborhood)) return false;
     if (App.filters.cuisines.length && !App.filters.cuisines.includes(r.cuisine_category)) return false;
     if (App.filters.priceTiers.length && !App.filters.priceTiers.includes(r.price_tier)) return false;
     if (App.filters.walkInOnly && r.walk_in_friendly !== true) return false;
@@ -196,8 +198,9 @@ function getFiltered() {
 }
 
 function hasFilters() {
-  return App.filters.boroughs.length || App.filters.cuisines.length ||
-         App.filters.priceTiers.length || App.filters.walkInOnly;
+  return App.filters.boroughs.length || App.filters.neighborhoods.length ||
+         App.filters.cuisines.length || App.filters.priceTiers.length ||
+         App.filters.walkInOnly;
 }
 
 function renderActiveChips() {
@@ -207,6 +210,7 @@ function renderActiveChips() {
 
   const chips = [];
   App.filters.boroughs.forEach(b => chips.push({ label: b, type: 'borough', value: b }));
+  App.filters.neighborhoods.forEach(n => chips.push({ label: n, type: 'neighborhood', value: n }));
   App.filters.cuisines.forEach(c => chips.push({ label: c, type: 'cuisine', value: c }));
   App.filters.priceTiers.forEach(p => chips.push({ label: '$'.repeat(p), type: 'price', value: p }));
   if (App.filters.walkInOnly) chips.push({ label: 'Walk-in only', type: 'walkin', value: null });
@@ -224,11 +228,65 @@ function renderActiveChips() {
 
 function removeChip(type, value) {
   if (type === 'borough') App.filters.boroughs = App.filters.boroughs.filter(b => b !== value);
+  if (type === 'neighborhood') App.filters.neighborhoods = App.filters.neighborhoods.filter(n => n !== value);
   if (type === 'cuisine') App.filters.cuisines = App.filters.cuisines.filter(c => c !== value);
   if (type === 'price') App.filters.priceTiers = App.filters.priceTiers.filter(p => String(p) !== String(value));
   if (type === 'walkin') App.filters.walkInOnly = false;
   renderActiveChips();
   if (App.currentView === 'browse') renderBrowse();
+}
+
+// ── NEIGHBORHOOD FILTER ───────────────────────────────────────
+function buildNeighborhoodFilter() {
+  const container = document.getElementById('filter-neighborhoods');
+  if (!container) return;
+
+  // Group neighborhoods by borough, sorted
+  const byBorough = {};
+  App.restaurants.forEach(r => {
+    if (!byBorough[r.borough]) byBorough[r.borough] = new Set();
+    byBorough[r.borough].add(r.neighborhood);
+  });
+
+  const boroughOrder = ['Manhattan', 'Brooklyn', 'Queens', 'Bronx', 'Staten Island'];
+  container.innerHTML = boroughOrder
+    .filter(b => byBorough[b])
+    .map(b => {
+      const hoods = [...byBorough[b]].sort();
+      return `
+        <div class="hood-group" data-borough-group="${esc(b)}">
+          <button class="hood-group-header" type="button">
+            <span>${esc(b)}</span>
+            <span class="hood-group-count">${hoods.length}</span>
+            <span class="hood-group-arrow">&#8250;</span>
+          </button>
+          <div class="hood-chip-row chip-row hidden">
+            ${hoods.map(h => `<button class="chip" data-neighborhood="${esc(h)}">${esc(h)}</button>`).join('')}
+          </div>
+        </div>`;
+    }).join('');
+
+  // Borough group toggle
+  container.querySelectorAll('.hood-group-header').forEach(header => {
+    header.addEventListener('click', () => {
+      const group = header.closest('.hood-group');
+      const row = group.querySelector('.hood-chip-row');
+      const arrow = header.querySelector('.hood-group-arrow');
+      const open = !row.classList.contains('hidden');
+      row.classList.toggle('hidden', open);
+      arrow.style.transform = open ? '' : 'rotate(90deg)';
+    });
+  });
+
+  // Neighborhood chip toggle
+  container.querySelectorAll('[data-neighborhood]').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const n = chip.dataset.neighborhood;
+      toggleArrayFilter(App.filters.neighborhoods, n);
+      chip.classList.toggle('selected', App.filters.neighborhoods.includes(n));
+      updateFilterCount();
+    });
+  });
 }
 
 // ── FILTER SHEET ─────────────────────────────────────────────
@@ -237,7 +295,7 @@ function setupFilterSheet() {
   overlay?.addEventListener('click', e => { if (e.target === overlay) closeFilterSheet(); });
 
   document.getElementById('clear-filters')?.addEventListener('click', () => {
-    App.filters = { boroughs: [], cuisines: [], priceTiers: [], walkInOnly: false };
+    App.filters = { boroughs: [], neighborhoods: [], cuisines: [], priceTiers: [], walkInOnly: false };
     syncFilterUI();
     updateFilterCount();
   });
@@ -306,12 +364,25 @@ function closeFilterSheet() {
 function syncFilterUI() {
   document.querySelectorAll('[data-borough]').forEach(c =>
     c.classList.toggle('selected', App.filters.boroughs.includes(c.dataset.borough)));
+  document.querySelectorAll('[data-neighborhood]').forEach(c =>
+    c.classList.toggle('selected', App.filters.neighborhoods.includes(c.dataset.neighborhood)));
   document.querySelectorAll('[data-cuisine]').forEach(c =>
     c.classList.toggle('selected', App.filters.cuisines.includes(c.dataset.cuisine)));
   document.querySelectorAll('[data-price]').forEach(c =>
     c.classList.toggle('selected', App.filters.priceTiers.includes(parseInt(c.dataset.price))));
   const wi = document.getElementById('filter-walkin');
   if (wi) wi.checked = App.filters.walkInOnly;
+  // Auto-expand borough groups that have selected neighborhoods
+  document.querySelectorAll('.hood-group').forEach(group => {
+    const hasSelected = [...group.querySelectorAll('[data-neighborhood]')]
+      .some(c => c.classList.contains('selected'));
+    const row = group.querySelector('.hood-chip-row');
+    const arrow = group.querySelector('.hood-group-arrow');
+    if (hasSelected && row) {
+      row.classList.remove('hidden');
+      if (arrow) arrow.style.transform = 'rotate(90deg)';
+    }
+  });
 }
 
 function updateFilterCount() {

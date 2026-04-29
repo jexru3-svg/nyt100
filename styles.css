@@ -757,6 +757,48 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
 
 .filter-note { font-size: 12px; color: var(--text-dim); margin-top: 8px; opacity: 0.7; }
 
+/* ── NEIGHBORHOOD GROUPS ───────────────────────────────────── */
+.hood-group { margin-bottom: 4px; }
+.hood-group-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-dim);
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  -webkit-tap-highlight-color: transparent;
+  transition: background 0.15s;
+}
+.hood-group-header:active { background: var(--border); }
+.hood-group-count {
+  font-size: 11px;
+  background: var(--border);
+  border-radius: 10px;
+  padding: 1px 6px;
+  color: var(--text-dim);
+}
+.hood-group-arrow {
+  margin-left: auto;
+  font-size: 16px;
+  transition: transform 0.2s;
+  color: var(--text-dim);
+}
+.hood-chip-row {
+  padding: 8px 4px 4px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.hood-chip-row.hidden { display: none; }
+
 /* ── MAP VIEW ──────────────────────────────────────────────── */
 #view-map { padding: 0; }
 #leaflet-map {
