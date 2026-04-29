@@ -58,6 +58,9 @@ function handleHash(hash) {
   } else if (hash === '#mylist') {
     showView('mylist');
     renderMyList();
+  } else if (hash === '#map') {
+    showView('map');
+    initMap();
   } else {
     showView('discover');
     renderDiscover();
@@ -96,6 +99,8 @@ function updatePickCount() {
   const n = getFiltered().length;
   const el = document.getElementById('pick-count');
   if (el) el.textContent = n === 100 ? '100 restaurants' : `${n} of 100 match`;
+  const sub = document.querySelector('.pick-btn-sub');
+  if (sub) sub.textContent = n < 100 && hasFilters() ? `From ${n} filtered` : 'Random selection';
 }
 
 function renderRecentVisits() {
@@ -657,6 +662,79 @@ function renderMyListContent() {
     `;
   }).join('');
 }
+
+// ── MAP VIEW ─────────────────────────────────────────────────
+let leafletMap = null;
+let mapMarkers = [];
+let mapViewFilter = 'all';
+
+function initMap() {
+  const container = document.getElementById('leaflet-map');
+  if (!container || typeof L === 'undefined') return;
+
+  if (!leafletMap) {
+    leafletMap = L.map('leaflet-map', {
+      center: [40.7128, -74.0060],
+      zoom: 12,
+      zoomControl: false
+    });
+    L.control.zoom({ position: 'bottomright' }).addTo(leafletMap);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
+      maxZoom: 19
+    }).addTo(leafletMap);
+  }
+  // Fix display glitch when view becomes visible
+  setTimeout(() => leafletMap.invalidateSize(), 100);
+  renderMapMarkers();
+}
+
+function renderMapMarkers() {
+  if (!leafletMap) return;
+  mapMarkers.forEach(m => m.remove());
+  mapMarkers = [];
+
+  const ud = App.userData;
+  App.restaurants.forEach(r => {
+    if (!r.lat || !r.lng) return;
+    const isVisited = !!ud.visited[r.id];
+    const isWant = !!ud.wantToGo[r.id];
+    if (mapViewFilter === 'visited' && !isVisited) return;
+    if (mapViewFilter === 'wantToGo' && !isWant) return;
+
+    const color = isVisited ? '#4caf78' : isWant ? '#E8C547' : '#7a8fa6';
+    const size = (isVisited || isWant) ? 14 : 10;
+    const icon = L.divIcon({
+      className: 'map-pin-wrap',
+      html: `<div class="map-pin" style="width:${size}px;height:${size}px;background:${color}"></div>`,
+      iconSize: [size + 4, size + 4],
+      iconAnchor: [(size + 4) / 2, (size + 4) / 2]
+    });
+
+    const marker = L.marker([r.lat, r.lng], { icon })
+      .addTo(leafletMap)
+      .bindPopup(
+        `<div class="map-popup">
+          <div class="map-popup-name">${esc(r.name)}</div>
+          <div class="map-popup-sub">${esc(r.neighborhood)} &bull; ${esc(r.price_range)}</div>
+          ${walkInBadgeHTML(r)}
+          <a href="#restaurant/${r.id}" class="map-popup-link">View Profile &rarr;</a>
+        </div>`,
+        { maxWidth: 220, closeButton: false }
+      );
+    mapMarkers.push(marker);
+  });
+}
+
+// Map tab buttons
+document.querySelector('#view-map')?.addEventListener('click', e => {
+  const tab = e.target.closest('.map-tab');
+  if (!tab) return;
+  document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
+  tab.classList.add('active');
+  mapViewFilter = tab.dataset.mapview;
+  renderMapMarkers();
+});
 
 // ── LOCAL STORAGE ─────────────────────────────────────────────
 function saveUserData() {

@@ -749,6 +749,72 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
 
 .filter-note { font-size: 12px; color: var(--text-dim); margin-top: 8px; opacity: 0.7; }
 
+/* ── MAP VIEW ──────────────────────────────────────────────── */
+#view-map { padding: 0; }
+#leaflet-map {
+  position: absolute;
+  inset: 0;
+  top: calc(env(safe-area-inset-top, 16px) + 48px);
+  bottom: 0;
+}
+.map-top-bar {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  gap: 8px;
+  padding: calc(env(safe-area-inset-top, 16px) + 8px) 16px 8px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--border);
+  align-items: flex-end;
+  min-height: calc(env(safe-area-inset-top, 16px) + 48px);
+}
+.map-tab {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  color: var(--text-dim);
+  font-size: 13px;
+  font-family: inherit;
+  padding: 4px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.map-tab.active { background: var(--gold); border-color: var(--gold); color: var(--bg); font-weight: 600; }
+.map-pin-wrap { background: none !important; border: none !important; }
+.map-pin {
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.2);
+}
+/* Leaflet dark theme overrides */
+.leaflet-popup-content-wrapper {
+  background: #1a2f45;
+  color: #F5F0E8;
+  border: 1px solid #243548;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+  padding: 0;
+}
+.leaflet-popup-tip { background: #1a2f45; }
+.leaflet-popup-content { margin: 0; padding: 14px 16px; }
+.map-popup-name { font-size: 15px; font-weight: 700; margin-bottom: 3px; }
+.map-popup-sub { font-size: 12px; color: #7a8fa6; margin-bottom: 10px; }
+.map-popup-link {
+  display: block;
+  background: #E8C547;
+  color: #0D1B2A;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+}
+.leaflet-bar a { background: #132236; color: #F5F0E8; border-color: #243548; }
+.leaflet-bar a:hover { background: #1a2f45; }
+.leaflet-container { background: #0a1520; }
+
 /* ── TOAST ─────────────────────────────────────────────────── */
 .toast {
   position: fixed;

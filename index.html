@@ -11,6 +11,7 @@
   <link rel="apple-touch-icon" href="icons/icon-192.svg">
   <title>NYC Eats</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.css" crossorigin=""/>
 </head>
 <body>
 
@@ -162,6 +163,16 @@
   <div id="browse-list" class="card-list"></div>
 </section>
 
+<!-- ── MAP VIEW ───────────────────────────────────────────────── -->
+<section id="view-map" class="view">
+  <div class="map-top-bar">
+    <button class="map-tab active" data-mapview="all">All</button>
+    <button class="map-tab" data-mapview="wantToGo">Want to Go</button>
+    <button class="map-tab" data-mapview="visited">Visited</button>
+  </div>
+  <div id="leaflet-map"></div>
+</section>
+
 <!-- ── MY LIST VIEW ──────────────────────────────────────────── -->
 <section id="view-mylist" class="view">
   <div class="mylist-top">
@@ -261,11 +272,20 @@
     </svg>
     <span>My List</span>
   </button>
+  <button class="nav-btn" data-view="map">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="9.5" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="11" cy="9.5" r="2" fill="currentColor"/>
+      <path d="M11 15.5L8 19.5H14L11 15.5Z" fill="currentColor" opacity="0.7"/>
+    </svg>
+    <span>Map</span>
+  </button>
 </nav>
 
 <!-- ── NO-RESULTS TOAST ──────────────────────────────────────── -->
 <div id="toast" class="toast hidden"></div>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.js" crossorigin=""></script>
 <script src="app.js"></script>
 </body>
 </html>
