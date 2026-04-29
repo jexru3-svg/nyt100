@@ -955,7 +955,7 @@ input:checked + .slider::before { transform: translateX(20px); background: var(-
 .hood-chip-row.hidden { display: none; }
 
 /* ── MAP VIEW ──────────────────────────────────────────────── */
-#view-map { padding: 0; overflow: hidden; }
+#view-map { padding: 0; overflow: hidden; transform: none !important; transition: opacity 0.2s ease; }
 #leaflet-map {
   position: absolute;
   inset: 0;

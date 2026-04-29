@@ -137,7 +137,11 @@ function showView(name) {
 // ── BOTTOM NAV ───────────────────────────────────────────────
 function setupNav() {
   document.querySelectorAll('.nav-btn').forEach(btn => {
-    btn.addEventListener('click', () => navigate('#' + btn.dataset.view));
+    btn.addEventListener('click', () => {
+      const target = '#' + btn.dataset.view;
+      if (location.hash === target && target === '#map') { initMap(); return; }
+      navigate(target);
+    });
   });
 }
 
@@ -966,26 +970,37 @@ function setupIOSBanner() {
 let leafletMap = null;
 let mapMarkers = [];
 let mapViewFilter = 'all';
+let mapRetryInterval = null;
 
 function initMap() {
+  // Bug fix: clear any stale retry interval from previous navigations
+  if (mapRetryInterval) { clearInterval(mapRetryInterval); mapRetryInterval = null; }
+
   const container = document.getElementById('leaflet-map');
   if (!container) return;
+
+  // If map already exists, just invalidate and re-render markers
+  if (leafletMap) {
+    leafletMap.invalidateSize();
+    renderMapMarkers();
+    return;
+  }
 
   // Leaflet CDN may still be loading — retry for up to 5s
   if (typeof L === 'undefined') {
     let attempts = 0;
-    const retry = setInterval(() => {
+    mapRetryInterval = setInterval(() => {
       attempts++;
-      if (typeof L !== 'undefined') { clearInterval(retry); initMap(); }
-      else if (attempts >= 50) {
-        clearInterval(retry);
-        showToast('Map unavailable — check your connection');
-      }
+      if (typeof L !== 'undefined') { clearInterval(mapRetryInterval); mapRetryInterval = null; initMap(); }
+      else if (attempts >= 50) { clearInterval(mapRetryInterval); mapRetryInterval = null; showToast('Map unavailable — check your connection'); }
     }, 100);
     return;
   }
 
-  if (!leafletMap) {
+  // Defer L.map() construction until after the 200ms CSS view transition to
+  // avoid Leaflet measuring a zero-height container on iOS Safari mid-animation.
+  setTimeout(() => {
+    if (leafletMap) { leafletMap.invalidateSize(); return; }
     leafletMap = L.map('leaflet-map', {
       center: [40.7128, -74.0060],
       zoom: 12,
@@ -996,11 +1011,9 @@ function initMap() {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a>',
       maxZoom: 19
     }).addTo(leafletMap);
-  }
-  // Two calls: first after view transition (200ms), second as belt-and-suspenders
-  setTimeout(() => leafletMap.invalidateSize(), 250);
-  setTimeout(() => leafletMap.invalidateSize(), 600);
-  renderMapMarkers();
+    leafletMap.invalidateSize();
+    renderMapMarkers();
+  }, 250);
 }
 
 function renderMapMarkers() {
