@@ -971,6 +971,7 @@ let leafletMap = null;
 let mapMarkers = [];
 let mapViewFilter = 'all';
 let mapRetryInterval = null;
+let userLocationMarker = null;
 
 function initMap() {
   // Bug fix: clear any stale retry interval from previous navigations
@@ -1069,6 +1070,43 @@ document.getElementById('map-surprise-btn')?.addEventListener('click', () => {
     if (marker) marker.openPopup();
   }, 1400);
 });
+
+function placeUserMarker(lat, lng, accuracy) {
+  if (!leafletMap) return;
+  if (userLocationMarker) { userLocationMarker.remove(); userLocationMarker = null; }
+
+  const dot = L.circleMarker([lat, lng], {
+    radius: 9, color: '#fff', weight: 2.5, fillColor: '#2979ff', fillOpacity: 1
+  }).bindPopup('You are here', { closeButton: false });
+
+  const layers = [dot];
+  if (accuracy > 0 && accuracy <= 500) {
+    layers.push(L.circle([lat, lng], {
+      radius: accuracy, color: '#2979ff', weight: 1, fillColor: '#2979ff', fillOpacity: 0.1
+    }));
+  }
+
+  userLocationMarker = L.layerGroup(layers).addTo(leafletMap);
+  leafletMap.flyTo([lat, lng], 14, { duration: 1.2 });
+  document.getElementById('map-loc-btn')?.classList.add('active');
+}
+
+function showUserLocationOnMap() {
+  if (App.userLocation) {
+    placeUserMarker(App.userLocation.lat, App.userLocation.lng, App.userLocation.accuracy || 0);
+    return;
+  }
+  if (!navigator.geolocation) { showToast('Location not available on this device'); return; }
+  navigator.geolocation.getCurrentPosition(
+    pos => {
+      App.userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude, accuracy: pos.coords.accuracy };
+      placeUserMarker(App.userLocation.lat, App.userLocation.lng, App.userLocation.accuracy);
+    },
+    () => showToast('Location denied \u2014 enable in Settings > Safari > Location')
+  );
+}
+
+document.getElementById('map-loc-btn')?.addEventListener('click', showUserLocationOnMap);
 
 // Map tab buttons
 document.querySelector('#view-map')?.addEventListener('click', e => {
