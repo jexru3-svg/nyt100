@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
+  <rect width="600" height="400" fill="#0D1B2A"/>
+  <rect x="0" y="0" width="600" height="400" fill="url(#grad)"/>
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D1B2A"/>
+      <stop offset="100%" style="stop-color:#1a2f45"/>
+    </linearGradient>
+  </defs>
+  <circle cx="300" cy="180" r="60" fill="none" stroke="#E8C547" stroke-width="3" opacity="0.4"/>
+  <path d="M278 165 Q300 145 322 165 L322 200 Q300 215 278 200 Z" fill="#E8C547" opacity="0.3"/>
+  <line x1="300" y1="145" x2="300" y2="130" stroke="#E8C547" stroke-width="2" opacity="0.4"/>
+  <text x="300" y="275" text-anchor="middle" fill="#E8C547" font-size="16" font-family="system-ui" opacity="0.6">Photo Coming Soon</text>
+</svg>

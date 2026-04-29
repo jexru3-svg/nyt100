@@ -1,0 +1,192 @@
+[
+  {
+    "id": "bungalow-east-village",
+    "website": "https://bungalow.nyc",
+    "address": "24 1st Ave., New York, NY 10009",
+    "lat": 40.7245,
+    "lng": -73.9855,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": null,
+    "description": "Chef Vikas Khanna's lively East Village dining room celebrates the diverse culinary traditions of India's 28 states, with vibrant cocktails and contemporary dishes that have earned a Michelin Bib Gourmand. Walk-in spots are eagerly sought, with diners lining up early when reservations run out.",
+    "popular_dishes": [
+      "Five cheese kulcha (stuffed flatbread)",
+      "Yogurt kebabs with kataifi pastry and mango coulis",
+      "Turmeric-infused tequila cocktails",
+      "Contemporary regional Indian small plates"
+    ],
+    "price_per_item": "$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "cafe-kestrel-red-hook",
+    "website": "https://www.cafekestrel.com",
+    "address": "293 Van Brunt St., Brooklyn, NY 11231",
+    "lat": 40.6787293,
+    "lng": -74.0110792,
+    "walk_in_friendly": false,
+    "reservation_required": true,
+    "reservation_platform": "Resy",
+    "description": "A compact, warmly elegant European bistro in Red Hook where French-leaning cooking shines in a tight menu of terrines, salads, and carefully composed entrees. Michelin-listed, it punches well above its small footprint with dishes like duck leg confit with kumquats and a standout apricot cake.",
+    "popular_dishes": [
+      "Sage-infused fried halloumi with honey",
+      "Duck leg confit with rutabaga puree and candied kumquats",
+      "Seafood terrine with creme fraiche and gaufrettes",
+      "Apricot cake with caramel sauce"
+    ],
+    "price_per_item": "$$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "cafe-mado-prospect-heights",
+    "website": "https://www.cafemadonyc.com",
+    "address": "791 Washington Ave., Brooklyn, NY 11238",
+    "lat": 40.6731589,
+    "lng": -73.9626453,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": null,
+    "description": "A skylit all-day cafe in Prospect Heights that transitions from morning coffee and house-baked bread to refined evening small plates and handmade pasta, with a rotating seasonal menu driven by what's fresh. Michelin-listed and part of the Redwood Hospitality family (Oxalis, Place des Fetes).",
+    "popular_dishes": [
+      "Pissaladiere with anchovies and caramelized onions",
+      "Croque Monsieur",
+      "Pici with pesto Genovese",
+      "Glazed duck confit with watermelon radish"
+    ],
+    "price_per_item": "$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "carnitas-ramirez-east-village",
+    "website": "https://www.carnitasramirez.com",
+    "address": "210 E 3rd St, New York, NY 10009",
+    "lat": 40.7224776,
+    "lng": -73.9827650,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": null,
+    "description": "A nose-to-tail Mexican spot in the East Village open Wednesday through Sunday, devoted to the whole-animal tradition of carnitas and slow-cooked pork in all its forms. The small, casual space draws a loyal crowd for its deeply flavored renditions of a street-food classic.",
+    "popular_dishes": [
+      "Carnitas (slow-cooked pork)",
+      "Nose-to-tail pork preparations",
+      "Tacos al pastor",
+      "Chicharron"
+    ],
+    "price_per_item": "",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "casa-mono-union-square",
+    "website": "https://www.casamononyc.com",
+    "address": "52 Irving Pl., New York, NY 10003",
+    "lat": 40.7359257,
+    "lng": -73.9871655,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": "OpenTable",
+    "description": "A Michelin-starred Spanish tapas bar on Irving Place inspired by the Costa Brava, where adventurous proteins like sweetbreads and cockscombs share the menu with classic a la plancha preparations and a 600-bottle Spanish wine list. Its sister bar, Bar Jamon next door, pours Iberico ham and churros in an intimate standing-room setting.",
+    "popular_dishes": [
+      "Razor clams a la plancha",
+      "Arroz negro with fluke and piparra emulsion",
+      "Sweetbreads with fennel and marcona almond vinaigrette",
+      "Hand-carved Jamon Iberico de Pata Negra"
+    ],
+    "price_per_item": "$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "cervos-lower-east-side",
+    "website": "https://www.cervosnyc.com",
+    "address": "43 Canal St., New York, NY 10002",
+    "lat": 40.7148957,
+    "lng": -73.9913229,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": "Resy",
+    "description": "A Michelin Bib Gourmand seafood restaurant on Canal Street celebrating the coastal traditions of the Iberian Peninsula, with a Northeast-sourced menu, Iberian coastal wines, and a welcoming high-energy room of mosaic tiles and wood paneling. Outdoor seats are walk-in only in season; indoor seats take reservations year-round.",
+    "popular_dishes": [
+      "Seabream with crispy skin and Habanada peppers",
+      "Pea shoot salad with roasted hazelnuts and aged goat cheese",
+      "Marinated potatoes with fried rock shrimp",
+      "Iberian coastal seafood preparations"
+    ],
+    "price_per_item": "$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "chambers-tribeca",
+    "website": "https://www.chamberstribeca.com",
+    "address": "94 Chambers St., New York, NY 10007",
+    "lat": 40.7146185,
+    "lng": -74.0075403,
+    "walk_in_friendly": false,
+    "reservation_required": true,
+    "reservation_platform": "Resy",
+    "description": "A Michelin-listed TriBeCa spot beloved for its casual elegance, product-focused seasonal plates, and an exceptional wine program curated by Master Sommelier Pascaline Lepeltier, featuring back vintages and surprising value. The kitchen turns out refined small and large plates like honeynut squash agnolotti and seared Long Island fluke.",
+    "popular_dishes": [
+      "Castelfranco salad with heirloom chicory and clothbound cheddar",
+      "Honeynut squash agnolotti",
+      "Long Island fluke with shelling beans and preserved lemon",
+      "Seasonal small plates"
+    ],
+    "price_per_item": "$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "chez-ma-tante-greenpoint",
+    "website": "https://www.chezmatante.com",
+    "address": "92 Calyer St., Brooklyn, NY 11222",
+    "lat": 40.7269137,
+    "lng": -73.9574509,
+    "walk_in_friendly": false,
+    "reservation_required": true,
+    "reservation_platform": "Resy",
+    "description": "A Michelin-listed Greenpoint gem with a meat-forward, French-Canadian sensibility where pates, terrines, and porky dishes define the menu alongside bold pastas and a legendary brunch that draws long lines on weekends. Desserts like maple creme brulee and lemon tart are equally essential.",
+    "popular_dishes": [
+      "Chicken liver terrine",
+      "Parisian gnocchi with Fourme d'Ambert",
+      "Fennel sausage with cannellini beans and Pernod",
+      "Maple creme brulee"
+    ],
+    "price_per_item": "$$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "cho-dang-gol-midtown",
+    "website": "https://www.chodanggol.com",
+    "address": "55 W. 35th St., New York, NY 10018",
+    "lat": 40.7501714,
+    "lng": -73.9863439,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": null,
+    "description": "A longtime Koreatown stalwart and Michelin Bib Gourmand winner where house-made soft tofu is the star, served in bubbling casseroles and stews alongside rustic Korean favorites like pajeon, bibimbap, and kimchi stir-fries. A warm, simply decorated room makes it a reliable choice for unpretentious, soul-satisfying cooking.",
+    "popular_dishes": [
+      "Soon dubu jjigae (soft tofu stew)",
+      "Sauteed tofu trio with pork belly and kimchi",
+      "Pajeon (scallion pancake)",
+      "Bibimbap"
+    ],
+    "price_per_item": "$$",
+    "nyt_blurb": ""
+  },
+  {
+    "id": "chongqing-lao-zao-flushing",
+    "website": "https://www.chongqinglaozao.com",
+    "address": "37-04 Prince St., Flushing, NY 11354",
+    "lat": 40.7606459,
+    "lng": -73.8330454,
+    "walk_in_friendly": true,
+    "reservation_required": false,
+    "reservation_platform": null,
+    "description": "An authentic Chongqing-style hotpot restaurant in the heart of Flushing, where house-made tallow broth with hand-selected spices delivers the genuine ma-la numbing-spicy experience of the mountain city. Signature ingredients like beef tripe, goose intestine, and premium yellow throat set it apart from genericized versions.",
+    "popular_dishes": [
+      "Mao du (beef tripe) hotpot",
+      "Lao zao three-treasure skewers",
+      "Kuai zi beef",
+      "Peony mushroom blossom (mudan jun hua)"
+    ],
+    "price_per_item": "",
+    "nyt_blurb": ""
+  }
+]

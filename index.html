@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="NYC Eats">
+  <meta name="theme-color" content="#0D1B2A">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <title>NYC Eats</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ── DISCOVER VIEW ─────────────────────────────────────────── -->
+<section id="view-discover" class="view active">
+  <div class="discover-top">
+    <div class="app-wordmark">NYC Eats</div>
+    <div class="app-sub">NYT Top 100 &bull; 2025</div>
+  </div>
+
+  <div class="filter-strip" id="filter-strip">
+    <button class="filter-open-btn" id="open-filter-btn" aria-label="Open filters">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      Filters
+    </button>
+    <div class="active-chips" id="active-chips"></div>
+  </div>
+
+  <div class="pick-stage">
+    <div class="pick-count-label" id="pick-count">100 restaurants match</div>
+    <button class="pick-btn" id="pick-btn">
+      <span class="pick-btn-label">Pick for me</span>
+      <span class="pick-btn-sub">Random selection</span>
+    </button>
+  </div>
+
+  <div class="recent-section" id="recent-section" style="display:none">
+    <h3 class="section-label">Recently Visited</h3>
+    <div class="recent-scroll" id="recent-list"></div>
+  </div>
+</section>
+
+<!-- ── SPIN / REVEAL VIEW ────────────────────────────────────── -->
+<section id="view-spin" class="view">
+  <button class="back-btn" id="spin-back">&#8592; Back</button>
+  <div class="spin-stage">
+    <div class="spin-eyebrow">Tonight&rsquo;s pick&hellip;</div>
+    <div class="spin-drum" id="spin-drum">
+      <div class="spin-reel" id="spin-reel"></div>
+    </div>
+    <div class="spin-result hidden" id="spin-result">
+      <div class="spin-name" id="spin-name"></div>
+      <div class="spin-hood" id="spin-hood"></div>
+      <div class="spin-tags" id="spin-tags"></div>
+      <div class="spin-badges" id="spin-badges"></div>
+    </div>
+  </div>
+  <div class="spin-actions hidden" id="spin-actions">
+    <button class="btn-primary" id="spin-view-btn">View Profile</button>
+    <button class="btn-ghost" id="spin-again-btn">Pick Again</button>
+  </div>
+</section>
+
+<!-- ── RESTAURANT PROFILE VIEW ──────────────────────────────── -->
+<section id="view-restaurant" class="view">
+  <div class="hero-wrap">
+    <button class="back-btn hero-back" id="rest-back">&#8592;</button>
+    <img id="rest-image" src="images/placeholder.svg" alt="" class="hero-img" loading="lazy">
+    <div id="rest-rank-badge" class="rank-badge" style="display:none"></div>
+    <div class="new-badge" id="rest-new-badge" style="display:none">New 2025</div>
+  </div>
+
+  <div class="profile-body">
+    <div class="profile-header">
+      <h2 id="rest-name"></h2>
+      <div id="rest-meta" class="rest-meta"></div>
+    </div>
+
+    <div id="rest-cuisine-tags" class="tag-row"></div>
+
+    <div class="badge-row" id="rest-badge-row"></div>
+
+    <p id="rest-description" class="rest-description" style="display:none"></p>
+
+    <div id="rest-dishes-section" style="display:none">
+      <h3 class="section-label">Popular Dishes</h3>
+      <div id="rest-dishes" class="tag-row"></div>
+    </div>
+
+    <div class="rest-links" id="rest-links"></div>
+
+    <div class="divider"></div>
+
+    <!-- My Visit -->
+    <h3 class="section-label">My Visit</h3>
+
+    <div class="toggle-row">
+      <span class="toggle-label">Visited</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="rest-visited">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="toggle-row">
+      <span class="toggle-label">Want to go</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="rest-want">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div id="visit-details" class="visit-details" style="display:none">
+      <div class="rating-section">
+        <div class="rating-label">My Rating</div>
+        <div class="rating-row" id="rating-row">
+          <!-- 10 dots rendered by JS -->
+        </div>
+      </div>
+      <div class="notes-section">
+        <label class="notes-label" for="rest-notes">Notes</label>
+        <textarea id="rest-notes" placeholder="How was it? What did you order?..." rows="4"></textarea>
+      </div>
+    </div>
+
+    <div class="profile-spacer"></div>
+  </div>
+</section>
+
+<!-- ── BROWSE VIEW ───────────────────────────────────────────── -->
+<section id="view-browse" class="view">
+  <div class="browse-top">
+    <h2>Browse All</h2>
+    <button class="filter-open-btn sm" id="browse-filter-btn" aria-label="Filter">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <line x1="2" y1="4" x2="14" y2="4" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="4" y1="8" x2="12" y2="8" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="6" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="search-wrap">
+    <input type="search" id="browse-search" class="search-input" placeholder="Search by name or neighborhood...">
+  </div>
+
+  <div class="sort-row" id="sort-row">
+    <button class="sort-btn active" data-sort="alpha">A-Z</button>
+    <button class="sort-btn" data-sort="rank">Top 10</button>
+    <button class="sort-btn" data-sort="price-asc">$ first</button>
+    <button class="sort-btn" data-sort="price-desc">$$$$ first</button>
+  </div>
+
+  <div id="browse-count" class="browse-count"></div>
+  <div id="browse-list" class="card-list"></div>
+</section>
+
+<!-- ── MY LIST VIEW ──────────────────────────────────────────── -->
+<section id="view-mylist" class="view">
+  <div class="mylist-top">
+    <h2>My List</h2>
+  </div>
+  <div class="tab-bar">
+    <button class="tab active" data-tab="visited">Visited</button>
+    <button class="tab" data-tab="wantToGo">Want to Go</button>
+  </div>
+  <div id="mylist-content" class="card-list"></div>
+</section>
+
+<!-- ── FILTER SHEET (overlay) ────────────────────────────────── -->
+<div id="filter-overlay" class="sheet-overlay hidden" role="dialog" aria-modal="true">
+  <div class="sheet" id="filter-sheet">
+    <div class="sheet-handle"></div>
+    <div class="sheet-header">
+      <h3>Filters</h3>
+      <button class="clear-link" id="clear-filters">Clear all</button>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-label">Borough</div>
+      <div class="chip-row" id="filter-boroughs">
+        <button class="chip" data-borough="Manhattan">Manhattan</button>
+        <button class="chip" data-borough="Brooklyn">Brooklyn</button>
+        <button class="chip" data-borough="Queens">Queens</button>
+        <button class="chip" data-borough="Bronx">Bronx</button>
+        <button class="chip" data-borough="Staten Island">Staten Island</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-label">Cuisine</div>
+      <div class="chip-row" id="filter-cuisines">
+        <button class="chip" data-cuisine="American">American</button>
+        <button class="chip" data-cuisine="East Asian">East Asian</button>
+        <button class="chip" data-cuisine="European">European</button>
+        <button class="chip" data-cuisine="South Asian">South Asian</button>
+        <button class="chip" data-cuisine="Latin / Caribbean">Latin / Caribbean</button>
+        <button class="chip" data-cuisine="Middle Eastern">Middle Eastern</button>
+        <button class="chip" data-cuisine="Southeast Asian">Southeast Asian</button>
+        <button class="chip" data-cuisine="African">African</button>
+        <button class="chip" data-cuisine="Other">Other</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <div class="filter-label">Price Range</div>
+      <div class="chip-row" id="filter-prices">
+        <button class="chip" data-price="1">$</button>
+        <button class="chip" data-price="2">$$</button>
+        <button class="chip" data-price="3">$$$</button>
+        <button class="chip" data-price="4">$$$$</button>
+      </div>
+    </div>
+
+    <div class="filter-section">
+      <label class="toggle-row toggle-row-inline">
+        <span class="toggle-label">Walk-in friendly only</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="filter-walkin">
+          <span class="slider"></span>
+        </label>
+      </label>
+      <p class="filter-note">Hides reservation-required spots and those with unknown walk-in status</p>
+    </div>
+
+    <button class="btn-primary btn-full" id="apply-filters">
+      Show <span id="filter-match-count">100</span> restaurants
+    </button>
+  </div>
+</div>
+
+<!-- ── BOTTOM NAV ────────────────────────────────────────────── -->
+<nav id="bottom-nav">
+  <button class="nav-btn active" data-view="discover">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="11" y1="4" x2="11" y2="18" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="4" y1="11" x2="18" y2="11" stroke="currentColor" stroke-width="1.8"/>
+      <circle cx="11" cy="11" r="2.5" fill="currentColor"/>
+    </svg>
+    <span>Discover</span>
+  </button>
+  <button class="nav-btn" data-view="browse">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <line x1="4" y1="6" x2="18" y2="6" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="4" y1="11" x2="18" y2="11" stroke="currentColor" stroke-width="1.8"/>
+      <line x1="4" y1="16" x2="13" y2="16" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+    <span>Browse</span>
+  </button>
+  <button class="nav-btn" data-view="mylist">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+      <path d="M11 18.5C11 18.5 3 13 3 7.5C3 5.01 5.01 3 7.5 3C9 3 10.5 4 11 5C11.5 4 13 3 14.5 3C16.99 3 19 5.01 19 7.5C19 13 11 18.5 11 18.5Z" stroke="currentColor" stroke-width="1.8"/>
+    </svg>
+    <span>My List</span>
+  </button>
+</nav>
+
+<!-- ── NO-RESULTS TOAST ──────────────────────────────────────── -->
+<div id="toast" class="toast hidden"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "name": "NYT 100 Best NYC Restaurants",
+  "short_name": "NYC Eats",
+  "description": "Discover and track the NYT 2025 Top 100 NYC restaurants",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D1B2A",
+  "theme_color": "#0D1B2A",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml" },
+    { "src": "icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml" }
+  ]
+}
