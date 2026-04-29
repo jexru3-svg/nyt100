@@ -628,6 +628,20 @@ document.getElementById('rest-want')?.addEventListener('change', function() {
   saveUserData();
 });
 
+// Share button
+document.getElementById('rest-share-btn')?.addEventListener('click', () => {
+  const id = App.currentRestaurantId;
+  const r = id && App.restaurants.find(x => x.id === id);
+  if (!r) return;
+  const text = `${r.name} — ${r.neighborhood}, ${r.borough}\n${r.cuisine_tags.slice(0, 2).join(' · ')} · ${r.price_range}`;
+  const url = r.website || window.location.href;
+  if (navigator.share) {
+    navigator.share({ title: r.name, text, url }).catch(() => {});
+  } else {
+    navigator.clipboard?.writeText(`${text}\n${url}`).then(() => showToast('Copied to clipboard'));
+  }
+});
+
 // Notes autosave
 document.getElementById('rest-notes')?.addEventListener('blur', function() {
   const id = App.currentRestaurantId;
@@ -851,6 +865,22 @@ function renderMapMarkers() {
   });
 }
 
+// Surprise Me button
+document.getElementById('map-surprise-btn')?.addEventListener('click', () => {
+  const pool = getFiltered().filter(r => r.lat && r.lng);
+  if (!pool.length) { showToast('No restaurants match — adjust your filters'); return; }
+  const r = pool[Math.floor(Math.random() * pool.length)];
+  if (!leafletMap) return;
+  leafletMap.flyTo([r.lat, r.lng], 16, { duration: 1.2 });
+  setTimeout(() => {
+    const marker = mapMarkers.find(m => {
+      const ll = m.getLatLng();
+      return Math.abs(ll.lat - r.lat) < 0.0001 && Math.abs(ll.lng - r.lng) < 0.0001;
+    });
+    if (marker) marker.openPopup();
+  }, 1400);
+});
+
 // Map tab buttons
 document.querySelector('#view-map')?.addEventListener('click', e => {
   const tab = e.target.closest('.map-tab');
@@ -859,6 +889,36 @@ document.querySelector('#view-map')?.addEventListener('click', e => {
   tab.classList.add('active');
   mapViewFilter = tab.dataset.mapview;
   renderMapMarkers();
+});
+
+// ── EXPORT / IMPORT ──────────────────────────────────────────
+document.getElementById('export-btn')?.addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify(App.userData, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `nyc-eats-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(a.href);
+});
+
+document.getElementById('import-input')?.addEventListener('change', function() {
+  const file = this.files?.[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    try {
+      const parsed = JSON.parse(e.target.result);
+      if (typeof parsed !== 'object' || Array.isArray(parsed)) throw new Error();
+      App.userData = { visited: {}, wantToGo: {}, ratings: {}, notes: {}, ...parsed };
+      saveUserData();
+      renderMyList();
+      showToast('Data imported successfully');
+    } catch {
+      showToast('Invalid backup file');
+    }
+    this.value = '';
+  };
+  reader.readAsText(file);
 });
 
 // ── LOCAL STORAGE ─────────────────────────────────────────────

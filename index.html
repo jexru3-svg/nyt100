@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-title" content="NYC Eats">
   <meta name="theme-color" content="#0D1B2A">
   <link rel="manifest" href="manifest.json">
-  <link rel="apple-touch-icon" href="icons/icon-192.svg">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
   <title>NYC Eats</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.min.css" crossorigin=""/>
@@ -97,6 +97,17 @@
 
     <div class="rest-links" id="rest-links"></div>
 
+    <button class="share-btn" id="rest-share-btn">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <circle cx="12" cy="3" r="1.8" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="12" cy="13" r="1.8" stroke="currentColor" stroke-width="1.5"/>
+        <circle cx="3" cy="8" r="1.8" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="10.3" y1="3.9" x2="4.7" y2="7.1" stroke="currentColor" stroke-width="1.5"/>
+        <line x1="4.7" y1="8.9" x2="10.3" y2="12.1" stroke="currentColor" stroke-width="1.5"/>
+      </svg>
+      Share
+    </button>
+
     <div class="divider"></div>
 
     <!-- My Visit -->
@@ -171,6 +182,12 @@
     <button class="map-tab" data-mapview="visited">Visited</button>
   </div>
   <div id="leaflet-map"></div>
+  <button class="map-surprise-btn" id="map-surprise-btn" title="Surprise me">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 2L12.4 7.2L18 8L14 11.8L15.1 17.5L10 14.8L4.9 17.5L6 11.8L2 8L7.6 7.2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </svg>
+    Surprise me
+  </button>
 </section>
 
 <!-- ── MY LIST VIEW ──────────────────────────────────────────── -->
@@ -183,6 +200,13 @@
     <button class="tab" data-tab="wantToGo">Want to Go</button>
   </div>
   <div id="mylist-content" class="card-list"></div>
+  <div class="mylist-data-bar">
+    <button class="data-btn" id="export-btn">Export data</button>
+    <label class="data-btn" id="import-label">
+      Import data
+      <input type="file" id="import-input" accept=".json" style="display:none">
+    </label>
+  </div>
 </section>
 
 <!-- ── FILTER SHEET (overlay) ────────────────────────────────── -->
