@@ -1,4 +1,4 @@
-const CACHE = 'nyt100-v2';
+const CACHE = 'nyt100-v3';
 const SHELL = [
   './',
   './index.html',

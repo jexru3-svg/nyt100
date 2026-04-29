@@ -53,14 +53,15 @@ function genHeroSVG(r) {
 const App = {
   restaurants: [],
   userData: { visited: {}, wantToGo: {}, ratings: {}, notes: {} },
-  filters: { boroughs: [], cuisines: [], priceTiers: [], neighborhoods: [], walkInOnly: false },
+  filters: { boroughs: [], cuisines: [], priceTiers: [], neighborhoods: [], walkInOnly: false, new2025Only: false },
   currentView: 'discover',
   spinTarget: null,
   currentRestaurantId: null,
   browseSort: 'alpha',
   browseSearch: '',
   myListTab: 'visited',
-  spinInterval: null
+  spinInterval: null,
+  userLocation: null
 };
 
 // ── INIT ─────────────────────────────────────────────────────
@@ -80,6 +81,7 @@ async function init() {
   setupFilterSheet();
   setupBrowse();
   setupMyList();
+  setupIOSBanner();
 
   // Register service worker
   if ('serviceWorker' in navigator) {
@@ -193,6 +195,7 @@ function getFiltered() {
     if (App.filters.cuisines.length && !App.filters.cuisines.includes(r.cuisine_category)) return false;
     if (App.filters.priceTiers.length && !App.filters.priceTiers.includes(r.price_tier)) return false;
     if (App.filters.walkInOnly && r.walk_in_friendly !== true) return false;
+    if (App.filters.new2025Only && !r.is_new_2025) return false;
     return true;
   });
 }
@@ -200,7 +203,7 @@ function getFiltered() {
 function hasFilters() {
   return App.filters.boroughs.length || App.filters.neighborhoods.length ||
          App.filters.cuisines.length || App.filters.priceTiers.length ||
-         App.filters.walkInOnly;
+         App.filters.walkInOnly || App.filters.new2025Only;
 }
 
 function renderActiveChips() {
@@ -214,6 +217,7 @@ function renderActiveChips() {
   App.filters.cuisines.forEach(c => chips.push({ label: c, type: 'cuisine', value: c }));
   App.filters.priceTiers.forEach(p => chips.push({ label: '$'.repeat(p), type: 'price', value: p }));
   if (App.filters.walkInOnly) chips.push({ label: 'Walk-in only', type: 'walkin', value: null });
+  if (App.filters.new2025Only) chips.push({ label: 'New 2025', type: 'new2025', value: null });
 
   container.innerHTML = chips.map(c => `
     <span class="active-chip">
@@ -232,6 +236,7 @@ function removeChip(type, value) {
   if (type === 'cuisine') App.filters.cuisines = App.filters.cuisines.filter(c => c !== value);
   if (type === 'price') App.filters.priceTiers = App.filters.priceTiers.filter(p => String(p) !== String(value));
   if (type === 'walkin') App.filters.walkInOnly = false;
+  if (type === 'new2025') App.filters.new2025Only = false;
   renderActiveChips();
   if (App.currentView === 'browse') renderBrowse();
 }
@@ -295,7 +300,7 @@ function setupFilterSheet() {
   overlay?.addEventListener('click', e => { if (e.target === overlay) closeFilterSheet(); });
 
   document.getElementById('clear-filters')?.addEventListener('click', () => {
-    App.filters = { boroughs: [], neighborhoods: [], cuisines: [], priceTiers: [], walkInOnly: false };
+    App.filters = { boroughs: [], neighborhoods: [], cuisines: [], priceTiers: [], walkInOnly: false, new2025Only: false };
     syncFilterUI();
     updateFilterCount();
   });
@@ -341,6 +346,12 @@ function setupFilterSheet() {
     App.filters.walkInOnly = e.target.checked;
     updateFilterCount();
   });
+
+  // New 2025 toggle
+  document.getElementById('filter-new2025')?.addEventListener('change', e => {
+    App.filters.new2025Only = e.target.checked;
+    updateFilterCount();
+  });
 }
 
 function toggleArrayFilter(arr, val) {
@@ -372,6 +383,8 @@ function syncFilterUI() {
     c.classList.toggle('selected', App.filters.priceTiers.includes(parseInt(c.dataset.price))));
   const wi = document.getElementById('filter-walkin');
   if (wi) wi.checked = App.filters.walkInOnly;
+  const n2025 = document.getElementById('filter-new2025');
+  if (n2025) n2025.checked = App.filters.new2025Only;
   // Auto-expand borough groups that have selected neighborhoods
   document.querySelectorAll('.hood-group').forEach(group => {
     const hasSelected = [...group.querySelectorAll('[data-neighborhood]')]
@@ -526,15 +539,17 @@ function renderRestaurant(id) {
     label: 'Get directions',
     icon: '&#128205;'
   });
-  if (r.reservation_platform) links.push({
-    href: r.reservation_platform === 'Resy' ? 'https://resy.com' :
-          r.reservation_platform === 'Tock' ? 'https://www.exploretock.com' :
-          'https://www.opentable.com',
-    label: 'Reserve on ' + r.reservation_platform,
-    icon: '&#128203;'
-  });
+  if (r.reservation_platform === 'Resy') {
+    const slug = r.resy_slug || toSlug(r.name);
+    links.push({ href: `https://resy.com/cities/ny/venues/${slug}`, label: 'Reserve on Resy', icon: '&#128203;', cls: 'resy-btn' });
+  } else if (r.reservation_platform === 'Tock') {
+    const slug = r.tock_slug || toSlug(r.name);
+    links.push({ href: `https://www.exploretock.com/${slug}`, label: 'Reserve on Tock', icon: '&#128203;', cls: 'tock-btn' });
+  } else if (r.reservation_platform) {
+    links.push({ href: 'https://www.opentable.com', label: 'Reserve on ' + r.reservation_platform, icon: '&#128203;', cls: '' });
+  }
   linksEl.innerHTML = links.map(l =>
-    `<a href="${l.href}" class="rest-link" target="_blank" rel="noopener">
+    `<a href="${l.href}" class="rest-link${l.cls ? ' ' + l.cls : ''}" target="_blank" rel="noopener">
       <span class="link-icon">${l.icon}</span>${esc(l.label)}
       <span class="link-arrow">&#8594;</span>
     </a>`
@@ -546,6 +561,13 @@ function renderRestaurant(id) {
   const wantCb = document.getElementById('rest-want');
   if (visitedCb) visitedCb.checked = !!ud.visited[id];
   if (wantCb) wantCb.checked = !!ud.wantToGo[id];
+
+  // Visit date display
+  const vdEl = document.getElementById('visit-date-display');
+  if (vdEl) {
+    const vd = ud.visited[id];
+    vdEl.textContent = vd ? 'Visited ' + new Date(vd).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : '';
+  }
 
   // Notes
   const notesEl = document.getElementById('rest-notes');
@@ -610,6 +632,11 @@ document.getElementById('rest-visited')?.addEventListener('change', function() {
   }
   saveUserData();
   updateVisitDetailsVisibility();
+  const vdEl = document.getElementById('visit-date-display');
+  if (vdEl) {
+    const vd = App.userData.visited[id];
+    vdEl.textContent = vd ? 'Visited ' + new Date(vd).toLocaleDateString('en-US', { month: 'long', year: 'numeric' }) : '';
+  }
 });
 
 // Want to go toggle
@@ -660,6 +687,20 @@ function setupBrowse() {
   document.getElementById('sort-row')?.addEventListener('click', e => {
     const btn = e.target.closest('.sort-btn');
     if (!btn) return;
+    if (btn.dataset.sort === 'nearest' && !App.userLocation) {
+      if (!navigator.geolocation) { showToast('Location not available on this device'); return; }
+      navigator.geolocation.getCurrentPosition(
+        pos => {
+          App.userLocation = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+          document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          App.browseSort = 'nearest';
+          renderBrowse();
+        },
+        () => showToast('Location denied — enable in Settings > Safari > Location')
+      );
+      return;
+    }
     document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
     App.browseSort = btn.dataset.sort;
@@ -699,7 +740,24 @@ function renderBrowse() {
   container.innerHTML = list.map(r => restaurantCardHTML(r)).join('');
 }
 
+function haversine(r, loc) {
+  const R = 6371;
+  const dLat = (r.lat - loc.lat) * Math.PI / 180;
+  const dLng = (r.lng - loc.lng) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 +
+    Math.cos(loc.lat * Math.PI / 180) * Math.cos(r.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
 function sortRestaurants(list, sort) {
+  if (sort === 'nearest') {
+    if (!App.userLocation) return [...list].sort((a, b) => a.name.localeCompare(b.name));
+    return [...list].sort((a, b) => {
+      const dA = (a.lat && a.lng) ? haversine(a, App.userLocation) : Infinity;
+      const dB = (b.lat && b.lng) ? haversine(b, App.userLocation) : Infinity;
+      return dA - dB;
+    });
+  }
   return [...list].sort((a, b) => {
     if (sort === 'rank') {
       if (a.rank && b.rank) return a.rank - b.rank;
@@ -759,6 +817,8 @@ function renderMyListContent() {
   const container = document.getElementById('mylist-content');
   if (!container) return;
 
+  if (App.myListTab === 'stats') { renderMyListStats(); return; }
+
   let ids, emptyTitle, emptySub;
   if (App.myListTab === 'visited') {
     ids = Object.keys(App.userData.visited).filter(id => App.userData.visited[id]);
@@ -800,6 +860,106 @@ function renderMyListContent() {
       </div>
     `;
   }).join('');
+}
+
+function renderMyListStats() {
+  const container = document.getElementById('mylist-content');
+  if (!container) return;
+
+  const total = App.restaurants.length;
+  const visitedIds = Object.keys(App.userData.visited).filter(id => App.userData.visited[id]);
+  const visitedCount = visitedIds.length;
+  const progressPct = total > 0 ? Math.round(visitedCount / total * 100) : 0;
+
+  const cuisineTotals = {}, cuisineVisited = {};
+  const boroughTotals = {}, boroughVisited = {};
+  App.restaurants.forEach(r => {
+    cuisineTotals[r.cuisine_category] = (cuisineTotals[r.cuisine_category] || 0) + 1;
+    boroughTotals[r.borough] = (boroughTotals[r.borough] || 0) + 1;
+  });
+  visitedIds.forEach(id => {
+    const r = App.restaurants.find(x => x.id === id);
+    if (!r) return;
+    cuisineVisited[r.cuisine_category] = (cuisineVisited[r.cuisine_category] || 0) + 1;
+    boroughVisited[r.borough] = (boroughVisited[r.borough] || 0) + 1;
+  });
+
+  const cuisineRows = Object.entries(cuisineTotals)
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, t]) => {
+      const v = cuisineVisited[name] || 0;
+      return `<div class="stats-bar-row">
+        <span class="stats-bar-label">${esc(name)}</span>
+        <div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.round(v/t*100)}%"></div></div>
+        <span class="stats-bar-count">${v}</span>
+      </div>`;
+    }).join('');
+
+  const boroughRows = Object.entries(boroughTotals)
+    .sort((a, b) => b[1] - a[1])
+    .map(([name, t]) => {
+      const v = boroughVisited[name] || 0;
+      return `<div class="stats-bar-row">
+        <span class="stats-bar-label">${esc(name)}</span>
+        <div class="stats-bar-track"><div class="stats-bar-fill" style="width:${Math.round(v/t*100)}%"></div></div>
+        <span class="stats-bar-count">${v}</span>
+      </div>`;
+    }).join('');
+
+  const rated = Object.entries(App.userData.ratings)
+    .filter(([, v]) => v > 0)
+    .sort(([, a], [, b]) => b - a)
+    .slice(0, 3)
+    .map(([id, rating]) => ({ r: App.restaurants.find(x => x.id === id), rating }))
+    .filter(({ r }) => r);
+
+  const topRatedHTML = rated.length ? `
+    <div class="stats-block">
+      <div class="section-label">Top Rated</div>
+      ${rated.map(({ r, rating }) => `
+        <div class="stats-top-rest" onclick="navigate('#restaurant/${r.id}')">
+          <img class="rest-card-thumb" src="${genThumbSVG(r)}" alt="${esc(r.name)}" style="width:44px;height:44px;border-radius:8px">
+          <div style="flex:1;min-width:0">
+            <div class="rest-card-name">${esc(r.name)}</div>
+            <div class="rest-card-hood">${esc(r.neighborhood)}</div>
+          </div>
+          <span style="color:var(--gold);font-size:18px;font-weight:800;font-family:Georgia,serif">${rating}/10</span>
+        </div>
+      `).join('')}
+    </div>
+  ` : '';
+
+  container.innerHTML = `
+    <div class="stats-content">
+      <div class="stats-headline">
+        <div class="stats-number">${visitedCount}</div>
+        <div class="stats-label">of ${total} restaurants visited</div>
+        <div class="stats-progress-track">
+          <div class="stats-progress-fill" style="width:${progressPct}%"></div>
+        </div>
+      </div>
+      <div class="stats-block">
+        <div class="section-label">By Cuisine</div>
+        ${cuisineRows}
+      </div>
+      <div class="stats-block">
+        <div class="section-label">By Borough</div>
+        ${boroughRows}
+      </div>
+      ${topRatedHTML}
+    </div>
+  `;
+}
+
+function setupIOSBanner() {
+  const match = navigator.userAgent.match(/iPhone OS (\d+)_/);
+  if (match && parseInt(match[1]) < 17 && !localStorage.getItem('ios_banner_dismissed')) {
+    document.getElementById('ios-banner')?.classList.remove('hidden');
+  }
+  document.getElementById('ios-banner-close')?.addEventListener('click', () => {
+    document.getElementById('ios-banner')?.classList.add('hidden');
+    localStorage.setItem('ios_banner_dismissed', '1');
+  });
 }
 
 // ── MAP VIEW ─────────────────────────────────────────────────
@@ -950,6 +1110,14 @@ function showToast(msg) {
 }
 
 // ── UTILS ─────────────────────────────────────────────────────
+function toSlug(name) {
+  return name.toLowerCase()
+    .replace(/&/g, 'and')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-');
+}
+
 function esc(str) {
   if (!str) return '';
   return String(str)

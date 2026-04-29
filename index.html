@@ -15,6 +15,12 @@
 </head>
 <body>
 
+<!-- ── iOS BANNER ────────────────────────────────────────────── -->
+<div id="ios-banner" class="ios-banner hidden">
+  Update to iOS 17+ for the best experience
+  <button id="ios-banner-close" aria-label="Dismiss">&#x2715;</button>
+</div>
+
 <!-- ── DISCOVER VIEW ─────────────────────────────────────────── -->
 <section id="view-discover" class="view active">
   <div class="discover-top">
@@ -120,6 +126,7 @@
         <span class="slider"></span>
       </label>
     </div>
+    <div id="visit-date-display" class="visit-date-display"></div>
 
     <div class="toggle-row">
       <span class="toggle-label">Want to go</span>
@@ -168,6 +175,7 @@
     <button class="sort-btn" data-sort="rank">Top 10</button>
     <button class="sort-btn" data-sort="price-asc">$ first</button>
     <button class="sort-btn" data-sort="price-desc">$$$$ first</button>
+    <button class="sort-btn" data-sort="nearest">Nearest</button>
   </div>
 
   <div id="browse-count" class="browse-count"></div>
@@ -198,6 +206,7 @@
   <div class="tab-bar">
     <button class="tab active" data-tab="visited">Visited</button>
     <button class="tab" data-tab="wantToGo">Want to Go</button>
+    <button class="tab" data-tab="stats">Stats</button>
   </div>
   <div id="mylist-content" class="card-list"></div>
   <div class="mylist-data-bar">
@@ -268,6 +277,17 @@
         </label>
       </div>
       <p class="filter-note">Hides reservation-required spots and those with unknown walk-in status</p>
+    </div>
+
+    <div class="filter-section">
+      <div class="toggle-row toggle-row-inline">
+        <span class="toggle-label">New 2025 only</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="filter-new2025">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <p class="filter-note">Shows only restaurants new to the 2025 list</p>
     </div>
 
     <button class="btn-primary btn-full" id="apply-filters">
