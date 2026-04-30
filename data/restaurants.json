@@ -15,7 +15,7 @@
     "is_new_2025": false,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "SevenRooms",
     "address": "60 Greenwich Ave, New York, NY 10011",
     "lat": 40.736,
     "lng": -74.0005,
@@ -29,7 +29,8 @@
     ],
     "price_per_item": "$30-60",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "sevenrooms_slug": "semma"
   },
   {
     "id": "atomix-nomad",
@@ -244,7 +245,6 @@
     "address": "3 E 41st St, New York, NY 10017",
     "lat": 40.7487,
     "lng": -73.9888,
-    "website": "https://www.sushi-sho.com",
     "description": "Chef Keiji Nakazawa, who pioneered his Tokyo original and later a Waikiki outpost, brings his meticulous omakase tradition to a small wooden room near Bryant Park, serving roughly 20 courses that emphasize classical techniques like ice-aging, vinegar curing, and koji-rice fermentation (izushi) with no blowtorches or gimmicks. The no-photography policy preserves the intimacy of a meal that can run $800 or more with okonomi add-ons.",
     "popular_dishes": [
       "Sharisotto (lobster risotto with sushi rice)",
@@ -668,7 +668,8 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "bungalow-ny"
   },
   {
     "id": "cafe-kestrel-red-hook",
@@ -843,7 +844,7 @@
     "is_new_2025": true,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "OpenTable",
     "address": "94 Chambers St., New York, NY 10007",
     "lat": 40.7195,
     "lng": -74.0089,
@@ -857,7 +858,8 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "chambers-new-york"
   },
   {
     "id": "chez-ma-tante-greenpoint",
@@ -937,7 +939,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "Resy",
     "address": "37-04 Prince St., Flushing, NY 11354",
     "lat": 40.758,
     "lng": -73.8303,
@@ -951,7 +953,8 @@
     ],
     "price_per_item": "$12-25",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "chong-qing-lao-zao"
   },
   {
     "id": "cka-ka-qellu-belmont",
@@ -968,7 +971,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "OpenTable",
     "address": "2321 Hughes Ave, Bronx, NY 10458",
     "lat": 40.8518,
     "lng": -73.8878,
@@ -982,7 +985,8 @@
     ],
     "price_per_item": "$15-30",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "cka-ka-qellu-bronx"
   },
   {
     "id": "claud-east-village",
@@ -1190,7 +1194,7 @@
     "is_new_2025": false,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "SevenRooms",
     "address": "119 Delancey St, New York, NY 10002",
     "lat": 40.7189,
     "lng": -73.988,
@@ -1204,7 +1208,8 @@
     ],
     "price_per_item": "$20-45",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "sevenrooms_slug": "dhamakanyc"
   },
   {
     "id": "don-peppe-south-ozone-park",
@@ -1267,7 +1272,8 @@
     ],
     "price_per_item": "$4-15",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "permanently_closed": true
   },
   {
     "id": "eyval-bushwick",
@@ -1377,7 +1383,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "OpenTable",
     "address": "241 W Broadway, New York, NY 10013",
     "lat": 40.7218,
     "lng": -74.0073,
@@ -1391,7 +1397,8 @@
     ],
     "price_per_item": "$28-58",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "frenchette-tribeca-new-york"
   },
   {
     "id": "gage-and-tollner-downtown-brooklyn",
@@ -1472,7 +1479,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "SevenRooms",
     "address": "42 E 20th St, New York, NY 10003",
     "lat": 40.7386,
     "lng": -73.9888,
@@ -1486,7 +1493,8 @@
     ],
     "price_per_item": "$22-175",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "sevenrooms_slug": "gramercytavern"
   },
   {
     "id": "great-ny-noodletown-chinatown",
@@ -1548,7 +1556,8 @@
     ],
     "price_per_item": "$45-95",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "the-grill-ny"
   },
   {
     "id": "hainan-chicken-house-sunset-park",
@@ -1628,7 +1637,7 @@
     "is_new_2025": true,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "Resy",
     "address": "68-22 Forest Ave, Ridgewood, NY 11385",
     "lat": 40.7062,
     "lng": -73.9091,
@@ -1642,7 +1651,8 @@
     ],
     "price_per_item": "$18-35",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "hellbender"
   },
   {
     "id": "ho-foods-east-village",
@@ -1785,7 +1795,7 @@
     "is_new_2025": true,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "Tock",
     "address": "2 Harrison St, New York, NY 10013",
     "lat": 40.7193,
     "lng": -74.0089,
@@ -1799,7 +1809,8 @@
     ],
     "price_per_item": "$$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "tock_slug": "jungsik"
   },
   {
     "id": "keens-midtown",
@@ -1815,8 +1826,6 @@
     "price_tier": 4,
     "is_new_2025": true,
     "walk_in_friendly": true,
-    "reservation_required": true,
-    "reservation_platform": "Resy",
     "address": "72 West 36th St, New York, NY 10018",
     "lat": 40.7511,
     "lng": -73.9876,
@@ -1830,7 +1839,9 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "reservation_platform": "Resy",
+    "resy_slug": "keens-steakhouse"
   },
   {
     "id": "kisa-lower-east-side",
@@ -1846,8 +1857,6 @@
     "price_tier": 3,
     "is_new_2025": false,
     "walk_in_friendly": true,
-    "reservation_required": false,
-    "reservation_platform": "Resy",
     "address": "205 Allen St, New York, NY 10002",
     "lat": 40.7189,
     "lng": -73.9854,
@@ -1861,7 +1870,9 @@
     ],
     "price_per_item": "$32",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "reservation_platform": "Resy",
+    "resy_slug": "kisa"
   },
   {
     "id": "koloman-nomad",
@@ -2066,7 +2077,7 @@
     "is_new_2025": true,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "OpenTable",
     "address": "129 E. 60th St., New York, NY 10022",
     "lat": 40.7626,
     "lng": -73.9677,
@@ -2080,7 +2091,8 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "le-veau-dor-new-york"
   },
   {
     "id": "levant-astoria",
@@ -2205,7 +2217,8 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "lolas-ny"
   },
   {
     "id": "lucia-pizza-sheepshead-bay",
@@ -2285,7 +2298,7 @@
     "is_new_2025": true,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "Resy",
     "address": "13 E 30th St, New York, NY 10016",
     "lat": 40.7488,
     "lng": -73.9878,
@@ -2299,7 +2312,8 @@
     ],
     "price_per_item": "$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "okdongsik"
   },
   {
     "id": "okiboru-lower-east-side",
@@ -2412,7 +2426,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "Resy",
     "address": "342 E 6th St, New York, NY 10003",
     "lat": 40.7255,
     "lng": -73.9806,
@@ -2426,7 +2440,8 @@
     ],
     "price_per_item": "$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "raku-east-village"
   },
   {
     "id": "randazzos-clam-bar-sheepshead-bay",
@@ -2510,7 +2525,7 @@
     "is_new_2025": true,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Resy",
+    "reservation_platform": "OpenTable",
     "address": "228 DeKalb Ave, Brooklyn, NY 11205",
     "lat": 40.6889,
     "lng": -73.9745,
@@ -2524,7 +2539,8 @@
     ],
     "price_per_item": "$$$",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "sailor-reservations-brooklyn"
   },
   {
     "id": "salty-lunch-lady-ridgewood",
@@ -2667,7 +2683,7 @@
     "is_new_2025": true,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "Resy",
     "address": "119 Avenue A, New York, NY 10009",
     "lat": 40.726,
     "lng": -73.9801,
@@ -2681,7 +2697,8 @@
     ],
     "price_per_item": "$8-19",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "resy_slug": "superiority-burger"
   },
   {
     "id": "sushi-noz-upper-east-side",
@@ -2699,7 +2716,7 @@
     "is_new_2025": true,
     "walk_in_friendly": false,
     "reservation_required": true,
-    "reservation_platform": "Tock",
+    "reservation_platform": "SevenRooms",
     "address": "181 E 78th St, New York, NY 10021",
     "lat": 40.7747,
     "lng": -73.9574,
@@ -2713,7 +2730,8 @@
     ],
     "price_per_item": "$250-400 omakase",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "sevenrooms_slug": "sushinoznyc"
   },
   {
     "id": "sushi-ouji-soho",
@@ -3012,7 +3030,6 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": true,
-    "reservation_platform": "Resy",
     "address": "51 Grove St, New York, NY 10014",
     "lat": 40.7333,
     "lng": -74.0019,
@@ -3026,7 +3043,9 @@
     ],
     "price_per_item": "$18-42",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "reservation_platform": "Resy",
+    "resy_slug": "via-carota"
   },
   {
     "id": "village-cafe-gravesend",
@@ -3057,7 +3076,8 @@
     ],
     "price_per_item": "$15-28",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "reservation_url": "https://villagecafeny.com/reservation-form-v1/"
   },
   {
     "id": "white-bear-flushing",
@@ -3137,7 +3157,7 @@
     "is_new_2025": false,
     "walk_in_friendly": true,
     "reservation_required": false,
-    "reservation_platform": null,
+    "reservation_platform": "OpenTable",
     "address": "76-04 Woodside Ave, Elmhurst, NY 11373",
     "lat": 40.7371,
     "lng": -73.8804,
@@ -3151,6 +3171,7 @@
     ],
     "price_per_item": "$16-25",
     "image": "images/placeholder.svg",
-    "nyt_blurb": ""
+    "nyt_blurb": "",
+    "opentable_slug": "zaab-zaab-queens"
   }
 ]

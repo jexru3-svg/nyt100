@@ -517,6 +517,8 @@ body {
 .rest-link.tock-btn { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
 .rest-link.tock-btn .link-icon,
 .rest-link.tock-btn .link-arrow { color: rgba(255,255,255,0.75); }
+.rest-link-tag { cursor: default; opacity: 0.8; border-style: dashed; }
+.rest-link-tag.walkin-tag { color: var(--green); border-color: var(--green); }
 
 .share-btn {
   display: flex;

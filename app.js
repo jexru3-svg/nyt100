@@ -543,20 +543,36 @@ function renderRestaurant(id) {
     label: 'Get directions',
     icon: '&#128205;'
   });
-  if (r.reservation_platform === 'Resy') {
+  if (!r.reservation_platform && r.reservation_url) {
+    links.push({ href: r.reservation_url, label: 'Make a reservation', icon: '&#128203;', cls: '' });
+  } else if (r.reservation_platform === 'Resy') {
     const slug = r.resy_slug || toSlug(r.name);
     links.push({ href: `https://resy.com/cities/ny/venues/${slug}`, label: 'Reserve on Resy', icon: '&#128203;', cls: 'resy-btn' });
   } else if (r.reservation_platform === 'Tock') {
     const slug = r.tock_slug || toSlug(r.name);
     links.push({ href: `https://www.exploretock.com/${slug}`, label: 'Reserve on Tock', icon: '&#128203;', cls: 'tock-btn' });
+  } else if (r.reservation_platform === 'OpenTable') {
+    const slug = r.opentable_slug || toSlug(r.name);
+    links.push({ href: `https://www.opentable.com/r/${slug}`, label: 'Reserve on OpenTable', icon: '&#128203;', cls: '' });
+  } else if (r.reservation_platform === 'SevenRooms') {
+    const slug = r.sevenrooms_slug || toSlug(r.name);
+    links.push({ href: `https://www.sevenrooms.com/explore/${slug}/reservations/create/search/`, label: 'Reserve on SevenRooms', icon: '&#128203;', cls: '' });
   } else if (r.reservation_platform) {
-    links.push({ href: 'https://www.opentable.com', label: 'Reserve on ' + r.reservation_platform, icon: '&#128203;', cls: '' });
+    const href = r.website || '#';
+    links.push({ href, label: 'Make a reservation', icon: '&#128203;', cls: '' });
+  }
+  if (r.walk_in_friendly === true) {
+    links.push({ href: null, label: 'Walk-ins welcome', icon: '&#x1F6B6;', cls: 'walkin-tag' });
   }
   linksEl.innerHTML = links.map(l =>
-    `<a href="${l.href}" class="rest-link${l.cls ? ' ' + l.cls : ''}" target="_blank" rel="noopener">
-      <span class="link-icon">${l.icon}</span>${esc(l.label)}
-      <span class="link-arrow">&#8594;</span>
-    </a>`
+    l.href === null
+      ? `<span class="rest-link rest-link-tag${l.cls ? ' ' + l.cls : ''}">
+          <span class="link-icon">${l.icon}</span>${esc(l.label)}
+        </span>`
+      : `<a href="${l.href}" class="rest-link${l.cls ? ' ' + l.cls : ''}" target="_blank" rel="noopener">
+          <span class="link-icon">${l.icon}</span>${esc(l.label)}
+          <span class="link-arrow">&#8594;</span>
+        </a>`
   ).join('');
 
   // My Visit toggles
@@ -589,11 +605,9 @@ function renderRestaurant(id) {
 }
 
 function walkInBadgeHTML(r) {
-  if (r.walk_in_friendly === true)
-    return `<span class="badge badge-walkin">Walk-in friendly</span>`;
-  if (r.walk_in_friendly === false)
-    return `<span class="badge badge-reservation">Reservation required</span>`;
-  return `<span class="badge badge-unknown">Call ahead</span>`;
+  if (!r.reservation_platform && !r.walk_in_friendly && !r.reservation_url)
+    return `<span class="badge badge-unknown">Call ahead</span>`;
+  return '';
 }
 
 function renderRatingDots(current) {
