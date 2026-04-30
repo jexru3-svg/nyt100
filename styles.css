@@ -56,7 +56,6 @@ body {
   position: fixed;
   bottom: 0;
   left: 0; right: 0;
-  height: calc(var(--nav-h) + env(safe-area-inset-bottom, 0px));
   padding-bottom: env(safe-area-inset-bottom, 0px);
   background: #fff;
   border-top: 1px solid var(--border);
@@ -66,6 +65,7 @@ body {
 }
 .nav-btn {
   flex: 1;
+  height: var(--nav-h);
   display: flex;
   flex-direction: column;
   align-items: center;
