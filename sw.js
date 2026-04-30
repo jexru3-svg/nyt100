@@ -1,4 +1,4 @@
-const CACHE = 'nyt100-v9';
+const CACHE = 'nyt100-v10';
 const TILE_CACHE = 'nyt100-tiles';
 
 const SHELL = [
