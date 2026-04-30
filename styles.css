@@ -12,7 +12,7 @@
   --green:    #4a7c59;
   --radius:   12px;
   --radius-lg:20px;
-  --nav-h:    64px;
+  --nav-h:    52px;
 }
 
 /* ── RESET ─────────────────────────────────────────────────── */
@@ -54,18 +54,26 @@ body {
 /* ── BOTTOM NAV ────────────────────────────────────────────── */
 #bottom-nav {
   position: fixed;
-  bottom: 0;
+  bottom: env(safe-area-inset-bottom, 0px);
   left: 0; right: 0;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  height: var(--nav-h);
+  align-items: center;
   background: #fff;
   border-top: 1px solid var(--border);
   display: flex;
   z-index: 100;
   box-shadow: 0 -2px 12px rgba(93,62,40,0.06);
 }
+#bottom-nav::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0; right: 0;
+  height: env(safe-area-inset-bottom, 0px);
+  background: #fff;
+}
 .nav-btn {
   flex: 1;
-  height: var(--nav-h);
   display: flex;
   flex-direction: column;
   align-items: center;
